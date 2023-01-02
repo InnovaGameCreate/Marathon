@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMotion : MonoBehaviour
 {
     //マクロ
     public int jumpNum = 1; //空中でのジャンプ回数
+    public float acceleration = 0.98f; //加速度
+    public float setVelocity = 0f; //ジャンプ初速度
 
     //変数
-    private int jumpCount = 0; //ジャンプ回数
-    private float gravity = 0f; //重力変数
-    private bool useGravity = false; //重力フラグ
-    private bool useJump = false; //ジャンプフラグ
+    private int jumpCount = 0; //ジャンプ回数計測
+    private float velocity = 0f; //降下速度
+    private float timeCount = 30f; //スローダッシュのタイムカウント
+    private bool slow = false; //スローダッシュフラグ
 
-    //仮変数（現段階）
-    private float speed = 0.002f;
+    //オブジェクト
+    public Text timeCountLabel;
 
     // Start is called before the first frame update
     void Start()
@@ -26,62 +29,71 @@ public class PlayerMotion : MonoBehaviour
     void Update()
     {
         //前進
-        this.gameObject.transform.Translate(speed, 0.0f, 0.0f);
+        this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
 
         //スピード変更
-        if (InputOperation.input.arp)
+        if (InputOperation.input.arp && timeCount >= 0)
         {
-            speed = 0.001f;
+            slow = true;
+            Distance.dash = 0.5f;
         }
         if (InputOperation.input.srp)
         {
-            speed = 0.002f;
+            slow = false;
+            Distance.dash = 1f;
         }
         if (InputOperation.input.drp)
         {
-            speed = 0.003f;
+            slow = false;
+            Distance.dash = 1.5f;
         }
-
-        //重力オン
-        if ((!PlayerMask.gravityLeftRect.trg && !PlayerMask.gravityRightRect.trg) || useJump)
-        {
-            useGravity = true;
-        }
-        else
-        {
-            useGravity = false;
-            gravity = 0;
-            jumpCount = 0;
-        }
-
-        //ジャンプフラグリセット
-        if (gravity <= 0) useJump = false;
 
         //ジャンプ
         if (InputOperation.input.wrp && jumpCount < jumpNum)
         {
-            //this.gameObject.transform.Translate(0.0f, 0.05f, 0.0f);
-            useJump = true;
-            gravity = 0.01f; //重力の設定
+            velocity = setVelocity;
+            this.gameObject.transform.Translate(0.0f, 0.1f, 0.0f);
+            PlayerMask.playerMove = 0;
             jumpCount++; //空中でのジャンプ回数
         }
 
-        //坂道
-        if (PlayerMask.upRect.trg && !useGravity)
+        //プレイヤー上下移動
+        switch (PlayerMask.playerMove)
         {
-            this.gameObject.transform.Translate(0.0f, 0.01f, 0.0f);
+            case 0:
+                //Debug.Log("gravity");
+                velocity -= acceleration * Time.deltaTime;
+                this.gameObject.transform.Translate(0.0f, velocity, 0.0f);
+                break;
+            case 1:
+                velocity = 0;
+                jumpCount = 0;
+                break;
+            case 2:
+                //Debug.Log("up");
+                this.gameObject.transform.Translate(0.0f, 0.02f, 0.0f);
+                break;
+            case 3:
+                //Debug.Log("down");
+                this.gameObject.transform.Translate(0.0f, -0.02f, 0.0f);
+                break;
         }
-        if (!PlayerMask.downRect.trg && !useGravity && !PlayerMask.gravityRightRect.trg)
+
+        //スローダッシュのタイムカウント
+        if (slow)
         {
-            this.gameObject.transform.Translate(0.0f, -0.01f, 0.0f);
+            //時間計測
+            timeCount -= Time.deltaTime;
+
+            //時間を使い切る
+            if (timeCount < 0)
+            {
+                slow = false;
+            }
         }
-        
-        //重力計算
-        if (useGravity)
-        {
-            gravity -= 0.00002f;
-            this.gameObject.transform.Translate(0.0f, gravity, 0.0f);
-        }
+
+        //スローダッシュ残り時間
+        timeCountLabel.text = "スローダッシュ：" + timeCount.ToString("N2");
 
         //リピート管理
         InputOperation.input.wrp = false;

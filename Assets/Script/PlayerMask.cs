@@ -9,44 +9,45 @@ public class PlayerMask : MonoBehaviour
     {
         public Vector2 rect1;
         public Vector2 rect2;
-        public bool trg; //当たり判定を示すフラグ
     }
 
     //変数
-    public static MaskRect upRect; //右足の当たり判定
-    public static MaskRect downRect; //左足の当たり判定
-    public static MaskRect gravityLeftRect; //地面右の当たり判定
-    public static MaskRect gravityRightRect; //地面左の当たり判定
-    public LayerMask Layer; //レイヤー
+    public LayerMask Layer1; //レイヤー
+    public LayerMask Layer2; //レイヤー
+    public LayerMask Layer3; //レイヤー
+    public static MaskRect leftLeg; //足
+    public static MaskRect rightLeg;
+    public static MaskRect pad;
+    public static int playerMove = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //ここで短形の設定
-        upRect.rect1 = new Vector2(0.4f, -0.8f);
-        upRect.rect2 = new Vector2(0.5f, -0.9f);
-        downRect.rect1 = new Vector2(-0.4f, -0.9f);
-        downRect.rect2 = new Vector2(-0.3f, -1f);
-        gravityLeftRect.rect1 = new Vector2(-0.5f, -0.9f);
-        gravityLeftRect.rect2 = new Vector2(-0.49f, -1f);
-        gravityRightRect.rect1 = new Vector2(0.4f, -0.9f);
-        gravityRightRect.rect2 = new Vector2(0.5f, -1f);
+        //短形の設定
+        leftLeg.rect1 = new Vector2(-0.5f, -0.99f);
+        leftLeg.rect2 = new Vector2(-0.49f, -1f);
+        rightLeg.rect1 = new Vector2(0.49f, -0.99f);
+        rightLeg.rect2 = new Vector2(0.5f, -1f);
+        pad.rect1 = new Vector2(-0.55f, -1f);
+        pad.rect2 = new Vector2(0.55f, -1.01f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //当たり判定処理
+        //プレイヤー座標
         Vector2 playerPos = new Vector2(transform.position.x, transform.position.y);
-        upRect.trg = Physics2D.OverlapArea(playerPos + upRect.rect1, playerPos + upRect.rect2, Layer);
-        downRect.trg = Physics2D.OverlapArea(playerPos + downRect.rect1, playerPos + downRect.rect2, Layer);
-        gravityLeftRect.trg = Physics2D.OverlapArea(playerPos + gravityLeftRect.rect1, playerPos + gravityLeftRect.rect2, Layer);
-        gravityRightRect.trg = Physics2D.OverlapArea(playerPos + gravityRightRect.rect1, playerPos + gravityRightRect.rect2, Layer);
 
-        //短形の表示
-        //Debug.DrawLine(playerPos + upRect.rect1, playerPos + upRect.rect2, Color.green);
-        //Debug.DrawLine(playerPos + downRect.rect1, playerPos + downRect.rect2, Color.green);
-        //Debug.DrawLine(playerPos + gravityLeftRect.rect1, playerPos + gravityLeftRect.rect2, Color.green);
-        //Debug.DrawLine(playerPos + gravityRightRect.rect1, playerPos + gravityRightRect.rect2, Color.green);
+        //短形と床の当たり判定
+        if (Physics2D.OverlapArea(playerPos + pad.rect1, playerPos + pad.rect2, Layer2)
+            && Physics2D.OverlapArea(playerPos + rightLeg.rect1, playerPos + rightLeg.rect2, Layer2)) playerMove = 2;
+        else if (Physics2D.OverlapArea(playerPos + pad.rect1, playerPos + pad.rect2, Layer3)
+            && !Physics2D.OverlapArea(playerPos + leftLeg.rect1, playerPos + leftLeg.rect2, Layer3)) playerMove = 3;
+        else if (Physics2D.OverlapArea(playerPos + pad.rect1, playerPos + pad.rect2, Layer1)
+                || Physics2D.OverlapArea(playerPos + pad.rect1, playerPos + pad.rect2, Layer2)
+                || Physics2D.OverlapArea(playerPos + pad.rect1, playerPos + pad.rect2, Layer3)) playerMove = 1;
+        else playerMove = 0;
+
+        if (playerMove == 3 && Physics2D.OverlapArea(playerPos + rightLeg.rect1, playerPos + rightLeg.rect2, Layer1)) playerMove = 2;
     }
 }
