@@ -16,9 +16,6 @@ public class PlayerMotion : MonoBehaviour
     private float timeCount = 30f; //スローダッシュのタイムカウント
     private bool slow = false; //スローダッシュフラグ
 
-    //オブジェクト
-    public Text timeCountLabel;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +48,7 @@ public class PlayerMotion : MonoBehaviour
         //ジャンプ
         if (InputOperation.input.wrp && jumpCount < jumpNum)
         {
+            Debug.Log("test");
             velocity = setVelocity;
             this.gameObject.transform.Translate(0.0f, 0.1f, 0.0f);
             PlayerMask.playerMove = 0;
@@ -91,9 +89,6 @@ public class PlayerMotion : MonoBehaviour
                 slow = false;
             }
         }
-
-        //スローダッシュ残り時間
-        timeCountLabel.text = "スローダッシュ：" + timeCount.ToString("N2");
 
         //リピート管理
         InputOperation.input.wrp = false;
