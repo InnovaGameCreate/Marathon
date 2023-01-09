@@ -48,7 +48,6 @@ public class PlayerMotion : MonoBehaviour
         //ƒWƒƒƒ“ƒv
         if (InputOperation.input.wrp && jumpCount < jumpNum)
         {
-            Debug.Log("test");
             velocity = setVelocity;
             this.gameObject.transform.Translate(0.0f, 0.1f, 0.0f);
             PlayerMask.playerMove = 0;
@@ -87,6 +86,7 @@ public class PlayerMotion : MonoBehaviour
             if (timeCount < 0)
             {
                 slow = false;
+                Distance.dash = 1f;
             }
         }
 
