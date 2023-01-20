@@ -11,7 +11,6 @@ public class MapController : MonoBehaviour
     private Vector2 middlePos;
     private Vector2 edgePos;
 
-    private int createstopper = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +27,7 @@ public class MapController : MonoBehaviour
 
         if (playerPos.x > edgePos.x)
         {
-            createstopper = 0;
-            Destroy(this.gameObject, 1.5f);
+            Destroy(this.gameObject, 3f);
         }
     }
 }
