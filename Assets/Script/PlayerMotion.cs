@@ -15,13 +15,11 @@ public class PlayerMotion : MonoBehaviour
     private float velocity = 0f; //降下速度
     private float timeCount = 30f; //スローダッシュのタイムカウント
     private bool slow = false; //スローダッシュフラグ
-    private int tmp_StaminaGauge; //スタミナゲージ初期値
 
     // Start is called before the first frame update
     void Start()
     {
-        //初期化
-        tmp_StaminaGauge = Status.StaminaGauge;
+
     }
 
     // Update is called once per frame
@@ -35,19 +33,16 @@ public class PlayerMotion : MonoBehaviour
         {
             slow = true;
             Distance.dash = 0.5f;
-            Status.StaminaGauge = 0;
         }
         if (InputOperation.input.srp)
         {
             slow = false;
             Distance.dash = 1f;
-            Status.StaminaGauge = tmp_StaminaGauge; 
         }
         if (InputOperation.input.drp)
         {
             slow = false;
             Distance.dash = 1.5f;
-            Status.StaminaGauge = tmp_StaminaGauge * 1.5f;
         }
 
         //ジャンプ
@@ -70,14 +65,19 @@ public class PlayerMotion : MonoBehaviour
             case 1:
                 velocity = 0;
                 jumpCount = 0;
+                Distance.slope = 1f;
+                Distance.slopeAdd = 0f;
                 break;
             case 2:
                 //Debug.Log("up");
                 this.gameObject.transform.Translate(0.0f, 0.02f, 0.0f);
+                Distance.slope = 1.2f;
+                Distance.slopeAdd = 0f;
                 break;
             case 3:
                 //Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.02f, 0.0f);
+                Distance.slopeAdd = 0.5f;
                 break;
         }
 
@@ -92,9 +92,11 @@ public class PlayerMotion : MonoBehaviour
             {
                 slow = false;
                 Distance.dash = 1f;
-                Status.StaminaGauge = tmp_StaminaGauge;
             }
         }
+
+        //速度割合の計算
+        hoge = Distance.dash * Distance.slope;
 
         //リピート管理
         InputOperation.input.wrp = false;
