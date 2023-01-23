@@ -8,6 +8,8 @@ TagManager:
   - ObstacleStone
   - ObstacleRottenOnigiri
   - ObstacleRunner
+  - Wall
+  - Heal
   layers:
   - Default
   - TransparentFX
