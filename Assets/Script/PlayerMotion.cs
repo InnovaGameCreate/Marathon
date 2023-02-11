@@ -15,6 +15,7 @@ public class PlayerMotion : MonoBehaviour
     private float velocity = 0f; //降下速度
     private float timeCount = 30f; //スローダッシュのタイムカウント
     private bool slow = false; //スローダッシュフラグ
+    public static float stamina = 1.0f; //スタミナ消費量
 
     // Start is called before the first frame update
     void Start()
@@ -67,17 +68,20 @@ public class PlayerMotion : MonoBehaviour
                 jumpCount = 0;
                 Distance.slope = 1f;
                 Distance.slopeAdd = 0f;
+                stamina = 1f;
                 break;
             case 2:
                 //Debug.Log("up");
                 this.gameObject.transform.Translate(0.0f, 0.02f, 0.0f);
                 Distance.slope = 1.2f;
+                stamina = 1.2f;
                 Distance.slopeAdd = 0f;
                 break;
             case 3:
                 //Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.02f, 0.0f);
                 Distance.slopeAdd = 0.5f;
+                stamina = 1f;
                 break;
         }
 
@@ -96,7 +100,7 @@ public class PlayerMotion : MonoBehaviour
         }
 
         //速度割合の計算
-        hoge = Distance.dash * Distance.slope;
+        stamina = Distance.dash * Distance.slope;
 
         //リピート管理
         InputOperation.input.wrp = false;
