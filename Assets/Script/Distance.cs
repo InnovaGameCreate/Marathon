@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Distance : MonoBehaviour
 {
     //マクロ
-    public static float speed = 40f; // m/s基本スピード
+    public static float speed = 4f; // m/s基本スピード
 
     //変数
     public static float slope = 1f; //坂道のスピード倍率
     public static float dash = 1f; //プレイヤーの走り倍率
     public static float distance = 0f; //プレイヤー走行距離
     public static float slopeAdd = 0f; //下り坂時の距離加算
+    public static float SPS = 40f; //距離計算をするための変数
 
     //オブジェクト
     public Text distanceLabel;
@@ -27,7 +28,7 @@ public class Distance : MonoBehaviour
     void Update()
     {
         //距離計算
-        distance += (speed * slope * dash * Time.deltaTime + slopeAdd);
+        distance += (SPS * slope * dash * Time.deltaTime + slopeAdd);
 
         //距離の表示
         distanceLabel.text = "距離：" + distance.ToString("N1");
