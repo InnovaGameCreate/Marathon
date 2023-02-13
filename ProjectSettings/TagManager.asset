@@ -10,6 +10,7 @@ TagManager:
   - ObstacleRunner
   - Wall
   - Heal
+  - warter
   layers:
   - Default
   - TransparentFX

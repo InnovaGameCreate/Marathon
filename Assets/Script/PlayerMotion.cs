@@ -16,6 +16,9 @@ public class PlayerMotion : MonoBehaviour
     private float timeCount = 30f; //スローダッシュのタイムカウント
     private bool slow = false; //スローダッシュフラグ
     public static float stamina = 1.0f; //スタミナ消費量
+    public float staminaPoint = 1.0f;//スタミナ総量
+    public float warterPoint = 1.0f;//水分総量
+
 
     // Start is called before the first frame update
     void Start()
@@ -108,4 +111,19 @@ public class PlayerMotion : MonoBehaviour
         InputOperation.input.srp = false;
         InputOperation.input.drp = false;
     }
-}
+
+    private void OnTriggerEnter(Collider other)
+    {
+     
+        if (other.gameObject.tag == "Heal")
+        {
+            staminaPoint += 1.0f;//スタミナを1,0回復
+        }
+
+        if (other.gameObject.tag == "warter")
+        {
+           warterPoint += 1.0f;//水分を1,0回復
+        }
+    }
+
+        }
