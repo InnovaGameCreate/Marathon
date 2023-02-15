@@ -28,7 +28,7 @@ public class Distance : MonoBehaviour
     void Update()
     {
         //‹——£ŒvZ
-        distance += (SPS * slope * dash * Time.deltaTime + slopeAdd);
+        distance += ((SPS + slopeAdd) * slope * dash * Time.deltaTime);
 
         //‹——£‚Ì•\¦
         distanceLabel.text = "‹——£F" + distance.ToString("N1");
