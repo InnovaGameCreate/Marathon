@@ -19,6 +19,8 @@ public class PlayerMotion : MonoBehaviour
     public float staminaPoint = 1.0f;//スタミナ総量
     public float warterPoint = 1.0f;//水分総量
 
+    [SerializeField] GameObject MainCamera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class PlayerMotion : MonoBehaviour
     {
         //前進
         this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
+        MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
 
         //スピード変更
         if (InputOperation.input.arp && timeCount >= 0)
@@ -75,14 +78,14 @@ public class PlayerMotion : MonoBehaviour
                 break;
             case 2:
                 //Debug.Log("up");
-                this.gameObject.transform.Translate(0.0f, 0.02f, 0.0f);
+                this.gameObject.transform.Translate(0.0f, 0.15f, 0.0f);//0.15
                 Distance.slope = 1.2f;
                 stamina = 1.2f;
                 Distance.slopeAdd = 0f;
                 break;
             case 3:
                 //Debug.Log("down");
-                this.gameObject.transform.Translate(0.0f, -0.02f, 0.0f);
+                this.gameObject.transform.Translate(0.0f, -0.01f, 0.0f);
                 Distance.slopeAdd = 0.5f;
                 stamina = 1f;
                 break;
