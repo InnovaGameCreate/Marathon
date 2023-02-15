@@ -67,7 +67,8 @@ public class PlayerMotion : MonoBehaviour
             case 0:
                 //Debug.Log("gravity");
                 velocity -= acceleration * Time.deltaTime;
-                this.gameObject.transform.Translate(0.0f, velocity, 0.0f);
+                this.gameObject.transform.Translate(0.0f, velocity, 0.0f); 
+                //jumpCount = 1;
                 break;
             case 1:
                 velocity = 0;
