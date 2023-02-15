@@ -7,6 +7,6 @@ public class Startgame1 : MonoBehaviour
 {
      public void Onclick()
     {
-        SceneManager.LoadScene("NakazawaMain");
+        SceneManager.LoadScene("Iwamoto 1");
     }
 }
