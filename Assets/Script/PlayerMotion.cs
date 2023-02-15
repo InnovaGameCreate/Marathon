@@ -73,7 +73,6 @@ public class PlayerMotion : MonoBehaviour
                 velocity = 0;
                 jumpCount = 0;
                 Distance.slope = 1f;
-                Distance.slopeAdd = 0f;
                 stamina = 1f;
                 break;
             case 2:
@@ -81,12 +80,10 @@ public class PlayerMotion : MonoBehaviour
                 this.gameObject.transform.Translate(0.0f, 0.15f, 0.0f);//0.15
                 Distance.slope = 1.2f;
                 stamina = 1.2f;
-                Distance.slopeAdd = 0f;
                 break;
             case 3:
                 //Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.01f, 0.0f);
-                Distance.slopeAdd = 0.5f;
                 stamina = 1f;
                 break;
         }
