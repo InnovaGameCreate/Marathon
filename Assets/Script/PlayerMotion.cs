@@ -60,14 +60,15 @@ public class PlayerMotion : MonoBehaviour
         {
             case 0:
                 //Debug.Log("gravity");
+                jumpCount = 1;
                 velocity -= acceleration * Time.deltaTime;
                 this.gameObject.transform.Translate(0.0f, velocity, 0.0f);
                 break;
             case 1:
+                Debug.Log("nomal");
                 velocity = 0;
                 jumpCount = 0;
                 Distance.slope = 1f;
-                Distance.slopeAdd = 0f;
                 stamina = 1f;
                 break;
             case 2:
@@ -75,12 +76,10 @@ public class PlayerMotion : MonoBehaviour
                 this.gameObject.transform.Translate(0.0f, 0.02f, 0.0f);
                 Distance.slope = 1.2f;
                 stamina = 1.2f;
-                Distance.slopeAdd = 0f;
                 break;
             case 3:
-                //Debug.Log("down");
+                Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.02f, 0.0f);
-                Distance.slopeAdd = 0.5f;
                 stamina = 1f;
                 break;
         }
