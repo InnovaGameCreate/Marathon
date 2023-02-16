@@ -11,16 +11,16 @@ public class PlayerAcceleration : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        thisPos = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerPos.x = player.transform.position.x;
+        playerPos = player.transform.position;
 
-        thisPos.x = this.transform.position.x;
 
-        if (playerPos.x > thisPos.x)
+        if (playerPos.x >= thisPos.x && thisPos.y <= playerPos.y)
         {
             Distance.SPS += 0.5f;
             Destroy(this.gameObject);

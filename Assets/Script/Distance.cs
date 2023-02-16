@@ -30,6 +30,8 @@ public class Distance : MonoBehaviour
         distance += (SPS * slope * dash * Time.deltaTime);
 
         //‹——£‚Ì•\¦
-        distanceLabel.text = "‹——£F" + distance.ToString("N1");
+        distanceLabel.text = "‹——£F" + distance.ToString("N1") + "m";
+
+        Debug.Log(SPS);
     }
 }

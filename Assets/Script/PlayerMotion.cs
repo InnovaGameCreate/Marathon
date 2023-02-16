@@ -14,6 +14,7 @@ public class PlayerMotion : MonoBehaviour
     private int jumpCount = 0; //ジャンプ回数計測
     private float velocity = 0f; //降下速度
     private float timeCount = 30f; //スローダッシュのタイムカウント
+    public Text SlowTimeCounter;//スローダッシュの残り時間を表示するテキスト
     private bool slow = false; //スローダッシュフラグ
     public static float stamina = 1.0f; //スタミナ消費量
     public float staminaPoint = 1.0f;//スタミナ総量
@@ -111,6 +112,9 @@ public class PlayerMotion : MonoBehaviour
         InputOperation.input.arp = false;
         InputOperation.input.srp = false;
         InputOperation.input.drp = false;
+
+
+        SlowTimeCounter.text = "スロー残り時間：" + timeCount.ToString("N1");
     }
 
     private void OnTriggerEnter(Collider other)
