@@ -29,9 +29,9 @@ public class HpBarCtrl : MonoBehaviour
         _hp3 = Status.StaminaGauge;
         _hp4 = Status.HealthGauge;
 
-        _slider1.value = _hp1;
-        _slider2.value = _hp2;
-        _slider3.value = _hp3;
-        _slider4.value = _hp4;
+        _slider1.value = _hp1 / 100;
+        _slider2.value = _hp2 / 100;
+        _slider3.value = _hp3 / 100;
+        _slider4.value = _hp4 / 100;
     }
 }

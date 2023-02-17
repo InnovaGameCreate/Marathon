@@ -21,8 +21,8 @@ public class MovingFloor : MonoBehaviour
         Pre_thisPos = this.transform.position;
         box2D = GetComponent<BoxCollider2D>();
 
-        box2D.offset = new Vector2(0, 0.4f);
-        box2D.size = new Vector2(1, 0.15f);
+        box2D.offset = new Vector2(0, 0.3f);
+        box2D.size = new Vector2(1, 0.05f);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class MovingFloor : MonoBehaviour
         {
             if (Pre_thisPos.x + length > thisPos.x)
             {
-                this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
+                this.gameObject.transform.Translate(Distance.speed * Distance.slope * Time.deltaTime, 0.0f, 0.0f);
             }
         }
     }

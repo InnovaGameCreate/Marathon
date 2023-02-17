@@ -51,4 +51,10 @@ public class DestoryObject : MonoBehaviour
         
     }
 
+    /*このオブジェクトが画面外に出ると呼ばれる*/
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
+
 }
