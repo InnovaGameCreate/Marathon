@@ -14,13 +14,16 @@ public class Distance : MonoBehaviour
     public static float distance = 0f; //プレイヤー走行距離
     public static float SPS = 40f; //距離計算をするための変数
 
+    public float timer = 0;//ゲームオーバーになるまでどれほどの時間走ったか
+    public Text timeLabel;
+
     //オブジェクト
     public Text distanceLabel;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -29,9 +32,15 @@ public class Distance : MonoBehaviour
         //距離計算
         distance += (SPS * slope * dash * Time.deltaTime);
 
+        //時間計算
+        timer += Time.deltaTime;
+
         //距離の表示
         distanceLabel.text = "距離：" + distance.ToString("N1") + "m";
 
-        Debug.Log(SPS);
+        //時間の表示
+        timeLabel.text = "経過時間：" + timer.ToString("F2");
+
+        //Debug.Log(SPS);
     }
 }

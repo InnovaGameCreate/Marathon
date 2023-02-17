@@ -11,8 +11,8 @@ public class PlayerMotion : MonoBehaviour
     public float setVelocity = 0f; //ジャンプ初速度
 
     //変数
-    private int jumpCount = 0; //ジャンプ回数計測
-    private float velocity = 0f; //降下速度
+    public int jumpCount = 0; //ジャンプ回数計測
+    public float velocity = 0f; //降下速度
     private float timeCount = 30f; //スローダッシュのタイムカウント
     public Text SlowTimeCounter;//スローダッシュの残り時間を表示するテキスト
     private bool slow = false; //スローダッシュフラグ

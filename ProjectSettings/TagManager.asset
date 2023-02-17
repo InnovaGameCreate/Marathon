@@ -10,7 +10,8 @@ TagManager:
   - ObstacleRunner
   - Wall
   - Heal
-  - warter
+  - Water
+  - JumpRamp
   layers:
   - Default
   - TransparentFX

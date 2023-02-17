@@ -12,10 +12,14 @@ public class Weather : MonoBehaviour
     private float timeCount = 0f; //タイムカウント
     private float randomValue; //確率値
 
+    private GameObject player;
+    public GameObject Rain;
+    //public GameObject Snow;
+    //public GameObject Wind;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -31,6 +35,11 @@ public class Weather : MonoBehaviour
 
             //天気の計算
             weatherNo = WeatherProbability(weatherNo);
+
+            if (weatherNo == 3)
+                Rain.SetActive(true);
+            else if(weatherNo != 3)
+                Rain.SetActive(false);
 
             Debug.Log(weatherNo);
         }
@@ -57,7 +66,7 @@ public class Weather : MonoBehaviour
                 else if (randomValue >= 0.90) ret = 3;
                 else if (randomValue >= 0.80) ret = 2;
                 else if (randomValue >= 0.70) ret = 1;
-                else ret = 0;
+                else ret = 0;           
                 break;
             case 1:
                 if (randomValue >= 0.90) ret = 4;

@@ -12,7 +12,7 @@ public class MapCreator : MonoBehaviour
     public GameObject stage5;
     public GameObject stage6;
     public GameObject stage7;
-
+    public GameObject stage8;
 
 
     private Vector2 playerPos;
@@ -35,7 +35,7 @@ public class MapCreator : MonoBehaviour
 
         if ((stageCreateNum +1 % 5 != 0) && (playerPos.x > 30 + 80 * stageCreateNum))
         {
-            RandomStageNum = Random.Range(1, 8);
+            RandomStageNum = Random.Range(1, 9);
             switch (RandomStageNum)
             {
                 case 1:
@@ -58,6 +58,9 @@ public class MapCreator : MonoBehaviour
                     break;
                 case 7:
                     Instantiate(stage7, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                    break;
+                case 8:
+                    Instantiate(stage8, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
                     break;
             }
             stageCreateNum++;
