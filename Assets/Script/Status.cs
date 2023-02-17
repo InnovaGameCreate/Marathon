@@ -14,7 +14,7 @@ public class Status : MonoBehaviour
     {
         SatietyGauge = 100;
         WaterGauge = 100;
-        StaminaGauge = 100;
+        StaminaGauge = 120;
         HealthGauge = 100;
     }
     void Update()
@@ -23,36 +23,33 @@ public class Status : MonoBehaviour
 
         SatietyGauge = Mathf.Clamp(SatietyGauge, 0, 100);
         WaterGauge = Mathf.Clamp(WaterGauge, 0, 100);
-        StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 100);
+        StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 120);
         HealthGauge = Mathf.Clamp(HealthGauge, 0, 100);
         if (currentTime >= 1.0f)
         {
             SatietyGauge -= 100 / 90;
             WaterGauge -= 100 / 90;
-            StaminaGauge -= 100 / 120;
+            StaminaGauge -= 120 / 120;
+            HealthGauge -= 0;
+            //水分、満腹ゲージを90秒で0%になるようにしてください
+            //スタミナゲージ120秒で0になるようにしてください
+            if (SatietyGauge >= 120 / 2 && WaterGauge >= 100 / 2)
+            {
+                StaminaGauge = StaminaGauge + 120 / 40;
+            }
+            //満腹度と水分が50%以上のときにスタミナが回復する。
+            //回復量は40秒で0から100に回復できる程度の速度
+            if (StaminaGauge <= 0)
+            {
+                HealthGauge = HealthGauge - 2;
+            }
+            //スタミナゲージが０の時毎秒２ずつ現象
+            if (WaterGauge <= 0)
+            {
+                HealthGauge = HealthGauge - 2;
+            }
+            //水分ゲージが０の時毎秒２ずつ現象
             currentTime = 0;
         }
-        //水分、満腹ゲージを90秒で0%になるようにしてください
-        //スタミナゲージ120秒で0になるようにしてください
-        if (SatietyGauge >= 100 / 2 && WaterGauge >= 100 / 2)
-        {
-            StaminaGauge = StaminaGauge + 100 / 40;
-        }
-        //満腹度と水分が50%以上のときにスタミナが回復する。
-        //回復量は40秒で0から100に回復できる程度の速度
-        if (StaminaGauge == 0)
-        {
-            HealthGauge = HealthGauge - 2;
-        }
-        //スタミナゲージが０の時毎秒２ずつ現象
-        if (WaterGauge == 0)
-        {
-            HealthGauge = HealthGauge - 2;
-        }
-        //水分ゲージが０の時毎秒２ずつ現象
-        Debug.Log(SatietyGauge);
-        Debug.Log(WaterGauge);
-        Debug.Log(StaminaGauge);
-        Debug.Log(HealthGauge);
     }
 }
