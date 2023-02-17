@@ -31,7 +31,7 @@ public class HpBarCtrl : MonoBehaviour
 
         _slider1.value = _hp1 / 100;
         _slider2.value = _hp2 / 100;
-        _slider3.value = _hp3 / 100;
+        _slider3.value = _hp3 / 120;
         _slider4.value = _hp4 / 100;
     }
 }
