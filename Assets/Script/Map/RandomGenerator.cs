@@ -21,7 +21,7 @@ public class RandomGenerator : MonoBehaviour
 
     public GameObject item1;
     public GameObject item2;
-    public GameObject item3;
+    //public GameObject item3;
 
     [Tooltip("è·äQï®Çê∂ê¨Ç∑ÇÈ")]
     public bool obstacleFlag;
@@ -62,7 +62,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int itemObstacle = Random.Range(0, 3);
+                int itemObstacle = Random.Range(0, 2);
 
                 switch (itemObstacle)
                 {
@@ -72,9 +72,9 @@ public class RandomGenerator : MonoBehaviour
                     case 1:
                         Instantiate(item2, new Vector2(random, Y), Quaternion.identity);
                         break;
-                    case 2:
+                   /* case 2:
                         Instantiate(item3, new Vector2(random, Y), Quaternion.identity);
-                        break;
+                        break;*/
 
                 }
             }
@@ -85,7 +85,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int itemObstacle = Random.Range(0, 6);
+                int itemObstacle = Random.Range(0, 5);
 
                 switch (itemObstacle)
                 {
@@ -95,16 +95,16 @@ public class RandomGenerator : MonoBehaviour
                     case 1:
                         Instantiate(item2, new Vector2(random, Y), Quaternion.identity);
                         break;
-                    case 2:
+                    /*case 2:
                         Instantiate(item3, new Vector2(random, Y), Quaternion.identity);
-                        break;
-                    case 3:
+                        break;*/
+                    case 2:
                         Instantiate(obstacle1, new Vector2(random, Y), Quaternion.identity);
                         break;
-                    case 4:
+                    case 3:
                         Instantiate(obstacle2, new Vector2(random, Y), Quaternion.identity);
                         break;
-                    case 5:
+                    case 4:
                         Instantiate(obstacle3, new Vector2(random, Y), Quaternion.identity);
                         break;
                 }
