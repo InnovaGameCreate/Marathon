@@ -8,6 +8,11 @@ public class HpBarCtrl : MonoBehaviour
     Slider _slider2;
     Slider _slider3;
     Slider _slider4;
+
+    public Text waterText;
+    public Text satietyText;
+    public Text staminaText;
+    public Text healthText;
     void Start()
     {
         // スライダーを取得する
@@ -15,6 +20,8 @@ public class HpBarCtrl : MonoBehaviour
         _slider2 = GameObject.Find("SliderSatietyGauge").GetComponent<Slider>();
         _slider3 = GameObject.Find("SliderStaminaGauge").GetComponent<Slider>();
         _slider4 = GameObject.Find("SliderHealthGauge").GetComponent<Slider>();
+
+        
 
     }
     float _hp1 = 0;
@@ -33,5 +40,10 @@ public class HpBarCtrl : MonoBehaviour
         _slider2.value = _hp2 / 100;
         _slider3.value = _hp3 / 120;
         _slider4.value = _hp4 / 100;
+
+        waterText.text = _hp1.ToString("00") + "%";
+        satietyText.text = _hp2.ToString("00") + "%";
+        staminaText.text = _hp3.ToString("00") + "%";
+        healthText.text = _hp4.ToString("00") + "%";
     }
 }
