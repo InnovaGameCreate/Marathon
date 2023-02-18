@@ -9,9 +9,9 @@ TagManager:
   - ObstacleRottenOnigiri
   - ObstacleRunner
   - Wall
-  - Heal
   - Water
   - JumpRamp
+  - Riceball
   layers:
   - Default
   - TransparentFX
