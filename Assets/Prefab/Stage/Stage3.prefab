@@ -102,9 +102,9 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   obstacle3: {fileID: 0}
-  item1: {fileID: 1520925441063764464, guid: 01a43ebd4604d3b4d849d33406e2f2e3, type: 3}
-  item2: {fileID: 2206406632724162477, guid: 611ff4256f28dec43af52d536a816488, type: 3}
-  item3: {fileID: 1520925441063764464, guid: 01a43ebd4604d3b4d849d33406e2f2e3, type: 3}
+  item1: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
+  item2: {fileID: 7847324275818143758, guid: 611ff4256f28dec43af52d536a816488, type: 3}
+  item3: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
   obstacleFlag: 0
   itemFlag: 1
 --- !u!1 &5740125710803646768

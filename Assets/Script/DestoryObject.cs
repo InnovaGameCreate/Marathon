@@ -34,15 +34,17 @@ public class DestoryObject : MonoBehaviour
             
             }
 
-            if (this.gameObject.tag == "Heal")
+            if (this.gameObject.tag == "Riceball")
             {
-                playerMotionCs.staminaPoint += 1.0f;//スタミナを1,0回復
+                Status.SatietyGauge = 100;
+                //playerMotionCs.staminaPoint += 1.0f;//スタミナを1,0回復
                 Destroy(this.gameObject);
             }
 
             if (this.gameObject.tag == "Water")
             {
-                playerMotionCs.warterPoint += 1.0f;//水分を1,0回復
+                Status.WaterGauge = 100;
+                //playerMotionCs.warterPoint += 1.0f;//水分を1,0回復
                 Destroy(this.gameObject);
             }
                 Destroy(this.gameObject);
