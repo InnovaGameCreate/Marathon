@@ -10,32 +10,34 @@ public class Status : MonoBehaviour
     public static float HealthGauge;//体力ゲージ水分ゲージが0のとき,スタミナゲージが0のときそれぞれ毎秒2ずつ減らしてください。重複可能
     private float currentTime = 0f;
 
+    public static bool injureflg = false;
+    public static int injuretime = 0;
+    private int healInjureSecond = 0;
+    
+
     void Start()
     {
-        SatietyGauge = 100;
-        WaterGauge = 100;
-        StaminaGauge = 100;
-        HealthGauge = 100;
+        SatietyGauge = 100f;
+        WaterGauge = 100f;
+        StaminaGauge = 100f;
+        HealthGauge = 100f;
     }
     void Update()
     {
         currentTime += Time.deltaTime;
 
-        SatietyGauge = Mathf.Clamp(SatietyGauge, 0, 100);
-        WaterGauge = Mathf.Clamp(WaterGauge, 0, 100);
-        StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 120);
-        HealthGauge = Mathf.Clamp(HealthGauge, 0, 100);
         if (currentTime >= 1.0f)
         {
-            SatietyGauge -= 100 / 90;
-            WaterGauge -= 100 / 90;
-            StaminaGauge -= 100 / 120;
+            SatietyGauge -= 100f / 90f;
+            WaterGauge -= 100f / 90f;
+            StaminaGauge -= 100f / 120f;
             HealthGauge -= 0;
             //水分、満腹ゲージを90秒で0%になるようにしてください
             //スタミナゲージ120秒で0になるようにしてください
             if (SatietyGauge >= 100 / 2 && WaterGauge >= 100 / 2)
             {
-                StaminaGauge = StaminaGauge + 100 / 40;
+                StaminaGauge = StaminaGauge + 100f / 40f;
+                
             }
             //満腹度と水分が50%以上のときにスタミナが回復する。
             //回復量は40秒で0から100に回復できる程度の速度
@@ -49,11 +51,27 @@ public class Status : MonoBehaviour
                 HealthGauge = HealthGauge - 2;
             }
             //水分ゲージが０の時毎秒２ずつ現象
-            if (PlayerDamage.count == 1)
+
+            
+            if (injureflg == true)
             {
                 HealthGauge = HealthGauge - 1;
+                healInjureSecond++;
+
+                if (healInjureSecond == injuretime)
+                    injureflg = false;
+
             }
+            //石に触れたら出血状態（10秒間スリップダメージ）
+
+            SatietyGauge = Mathf.Clamp(SatietyGauge, 0, 100);
+            WaterGauge = Mathf.Clamp(WaterGauge, 0, 100);
+            StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 100);
+            HealthGauge = Mathf.Clamp(HealthGauge, 0, 100);
+
             currentTime = 0;
         }
     }
+
+    
 }

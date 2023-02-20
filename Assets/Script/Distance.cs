@@ -36,6 +36,7 @@ public class Distance : MonoBehaviour
     {
         //‹——£ŒvŽZ
         distance += (SPS * slope * dash * Time.deltaTime);
+        distance = System.Math.Max(0, distance);
 
         //ŽžŠÔŒvŽZ
         timer += Time.deltaTime;
