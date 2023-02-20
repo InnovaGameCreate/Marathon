@@ -49,6 +49,10 @@ public class Status : MonoBehaviour
                 HealthGauge = HealthGauge - 2;
             }
             //…•ªƒQ[ƒW‚ª‚O‚Ì–ˆ•b‚Q‚¸‚ÂŒ»Û
+            if (PlayerDamage.count == 1)
+            {
+                HealthGauge = HealthGauge - 1;
+            }
             currentTime = 0;
         }
     }
