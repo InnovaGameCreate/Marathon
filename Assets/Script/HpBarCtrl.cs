@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HpBarCtrl : MonoBehaviour
 {
@@ -38,12 +39,17 @@ public class HpBarCtrl : MonoBehaviour
 
         _slider1.value = _hp1 / 100;
         _slider2.value = _hp2 / 100;
-        _slider3.value = _hp3 / 120;
+        _slider3.value = _hp3 / 100;
         _slider4.value = _hp4 / 100;
 
-        waterText.text = _hp1.ToString("00") + "%";
-        satietyText.text = _hp2.ToString("00") + "%";
-        staminaText.text = _hp3.ToString("00") + "%";
-        healthText.text = _hp4.ToString("00") + "%";
+        waterText.text = _hp1.ToString("0") + "%";
+        satietyText.text = _hp2.ToString("0") + "%";
+        staminaText.text = _hp3.ToString("0") + "%";
+        healthText.text = _hp4.ToString("0") + "%";
+
+        if (_hp4 <= 0)
+        {
+            SceneManager.LoadScene("Result");
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Distance : MonoBehaviour
 {
@@ -11,19 +12,21 @@ public class Distance : MonoBehaviour
     //変数
     public static float slope = 1f; //坂道のスピード倍率
     public static float dash = 1f; //プレイヤーの走り倍率
-    public static float distance = 0f; //プレイヤー走行距離
+    public static float distance;//プレイヤー走行距離
     public static float SPS = 40f; //距離計算をするための変数
 
-    public float timer = 0;//ゲームオーバーになるまでどれほどの時間走ったか
-    public Text timeLabel;
+    public static float timer;//ゲームオーバーになるまでどれほどの時間走ったか
 
     //オブジェクト
+    public Text timeLabel;
     public Text distanceLabel;
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
+        distance = 0f;
+        timer = 0f;
     }
 
 
@@ -45,4 +48,6 @@ public class Distance : MonoBehaviour
 
         //Debug.Log(SPS);
     }
+
+    
 }

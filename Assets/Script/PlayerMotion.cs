@@ -115,6 +115,12 @@ public class PlayerMotion : MonoBehaviour
 
 
         SlowTimeCounter.text = "スロー残り時間：" + timeCount.ToString("N1");
+
+        if (this.transform.position.y < 4.0f)
+        {
+            Status.HealthGauge = 0;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -131,4 +137,5 @@ public class PlayerMotion : MonoBehaviour
         }
     }
 
-        }
+    
+}
