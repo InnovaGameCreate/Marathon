@@ -7,24 +7,64 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource audiosource;
 
-    //public AudioClip title;//タイトル画面用
+    public AudioClip title;//タイトル画面用
     public AudioClip main;//メインゲーム画面用
-    //public AudioClip result;//リザルト画面用
+    public AudioClip result;//リザルト画面用
+
+    public string lastSceneName;
+    public static SoundManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this);
-        audiosource.clip = main;
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+        lastSceneName = "Title";
+
+        audiosource.clip = title;
         audiosource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //今後全てのシーンに対応した場合分けを書いていく
-        // 1/21時点ではメインゲーム用の音楽を流すことのみ記述する
-
         
+    }
+
+    void OnActiveSceneChanged(Scene prevScene, Scene nextScene)/*第１引数のprevSceneはNULLになってしまうらしい*/
+    {
+        
+        if (lastSceneName == "Title" && nextScene.name == "MainGame")
+        {
+            audiosource.clip = main;
+            audiosource.Play();
+            lastSceneName = "MainGame";
+        }
+
+        if (lastSceneName == "MainGame" && nextScene.name == "Result")
+        {
+            audiosource.clip = result;
+            audiosource.Play();
+            lastSceneName = "Result";
+        }
+
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            audiosource.clip = title;
+            audiosource.Play();
+            lastSceneName = "Title";
+        }
     }
 }

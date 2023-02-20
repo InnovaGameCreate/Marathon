@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class EndSystem : MonoBehaviour
 {
-
-	//　スタートボタンを押したら実行する
-	public void EndGame()
+    private GameObject distance;
+    public void Start()
+    {
+        distance = GameObject.Find("DistanceMeasure");
+    }
+    //　スタートボタンを押したら実行する
+    public void EndGame()
 	{
-		SceneManager.LoadScene("NAKAZAWASTART");
+        Destroy(distance);
+		SceneManager.LoadScene("Title");
 	}
 }

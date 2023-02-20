@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NAKAZAWASTART.unity
+    path: Assets/Scenes/Title.unity
     guid: 36552cbaf3b0d3b4bba267f9d779cbeb
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Iwamoto 1.unity
-    guid: 61727f250f027db44b82b54de38265e1
+    path: Assets/Scenes/MainGame.unity
+    guid: d0a25ea051a95a44a851b37e65ac6fef
   - enabled: 1
-    path: Assets/Scenes/NAKAZAWAEND.unity
+    path: Assets/Scenes/Result.unity
     guid: 74e47bc08375463499a6063ca8581f3c
   m_configObjects: {}

@@ -31,9 +31,11 @@ public class DestoryObject : MonoBehaviour
                 player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
                 PlayerMask.playerMove = 0;
                 playerMotionCs.jumpCount++; //‹ó’†‚Å‚ÌƒWƒƒƒ“ƒv‰ñ”
-            
+                Destroy(this.gameObject);
+
             }
 
+            
             if (this.gameObject.tag == "Riceball")
             {
                 Status.SatietyGauge = 100;
@@ -47,7 +49,8 @@ public class DestoryObject : MonoBehaviour
                 //playerMotionCs.warterPoint += 1.0f;//…•ª‚ğ1,0‰ñ•œ
                 Destroy(this.gameObject);
             }
-                Destroy(this.gameObject);
+
+               
 
         }
         

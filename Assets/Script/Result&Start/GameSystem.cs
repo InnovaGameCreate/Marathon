@@ -9,6 +9,6 @@ public class GameSystem : MonoBehaviour
 	//　スタートボタンを押したら実行する
 	public void StartGame()
 	{
-		SceneManager.LoadScene("Iwamoto 1");
+		SceneManager.LoadScene("MainGame");
 	}
 }
