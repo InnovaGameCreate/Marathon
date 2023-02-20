@@ -34,6 +34,7 @@ Transform:
   - {fileID: 8697521485682888048}
   - {fileID: 5848205622410742073}
   - {fileID: 2963254869083875066}
+  - {fileID: 871336201861984365}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,7 +64,7 @@ GameObject:
   - component: {fileID: 2963254869083875066}
   - component: {fileID: 1244010646776346761}
   m_Layer: 0
-  m_Name: ObstacleGenerator
+  m_Name: ItemGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,14 +100,67 @@ MonoBehaviour:
   generateRange: 40
   generateNumber: 3
   Y: 6
-  obstacle1: {fileID: 0}
-  obstacle2: {fileID: 0}
-  obstacle3: {fileID: 0}
+  obstacle1: {fileID: 9172334793145541293, guid: 4ad2e302bc2df864e9bce368225df89d, type: 3}
+  obstacle2: {fileID: 8809540012039157945, guid: c8324b2b06c97f140b1d3780c642745a, type: 3}
+  obstacle3: {fileID: 4062474523809248697, guid: 34bc21e508343f144a3227034285850d, type: 3}
   item1: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
   item2: {fileID: 7847324275818143758, guid: 611ff4256f28dec43af52d536a816488, type: 3}
-  item3: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
   obstacleFlag: 0
   itemFlag: 1
+--- !u!1 &3964740173811283079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871336201861984365}
+  - component: {fileID: 3225901524591076491}
+  m_Layer: 0
+  m_Name: ObstacleGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &871336201861984365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964740173811283079}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30, y: 6.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5813123400797379071}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3225901524591076491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964740173811283079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbff190de0efdca459ea57780ed68881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateRange: 40
+  generateNumber: 3
+  Y: 6
+  obstacle1: {fileID: 9172334793145541293, guid: 4ad2e302bc2df864e9bce368225df89d, type: 3}
+  obstacle2: {fileID: 8809540012039157945, guid: c8324b2b06c97f140b1d3780c642745a, type: 3}
+  obstacle3: {fileID: 4062474523809248697, guid: 34bc21e508343f144a3227034285850d, type: 3}
+  item1: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
+  item2: {fileID: 7847324275818143758, guid: 611ff4256f28dec43af52d536a816488, type: 3}
+  obstacleFlag: 1
+  itemFlag: 0
 --- !u!1 &5740125710803646768
 GameObject:
   m_ObjectHideFlags: 0

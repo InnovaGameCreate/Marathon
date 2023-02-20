@@ -53,8 +53,15 @@ public class PlayerMotion : MonoBehaviour
             Distance.dash = 1.5f;
         }
 
+        if (DestoryObject.stomachPain == 1)
+        {
+            slow = false;
+            Distance.dash = 0f;
+        }
+
+
         //ƒWƒƒƒ“ƒv
-        if (InputOperation.input.wrp && jumpCount < jumpNum)
+        if (InputOperation.input.wrp && jumpCount < jumpNum && DestoryObject.stomachPain != 1)
         {
             velocity = setVelocity;
             this.gameObject.transform.Translate(0.0f, 0.1f, 0.0f);
