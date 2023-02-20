@@ -6,9 +6,11 @@ public class Status : MonoBehaviour
 {
     public static int SatietyGauge;//満腹ゲージ90秒で0%になるようにしてください
     public static int WaterGauge;//水分ゲージ90秒で0%になるようにしてください
-    public static int StaminaGauge;//スタミナゲージ120秒で0になるようにしてください。満腹度と水分が50%以上のときにスタミナが回復する。回復量は40秒で0から100に回復できる程度の速度
+    public static float StaminaGauge;//スタミナゲージ120秒で0になるようにしてください。満腹度と水分が50%以上のときにスタミナが回復する。回復量は40秒で0から100に回復できる程度の速度
+    //StaminaGaugeをfloatに変えました.by小林
     public static int HealthGauge;//体力ゲージ水分ゲージが0のとき,スタミナゲージが0のときそれぞれ毎秒2ずつ減らしてください。重複可能
     private float currentTime = 0f;
+    public static float staminaPerSec = 1f; //1秒のスタミナ消費量
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class Status : MonoBehaviour
         {
             SatietyGauge -= 100 / 90;
             WaterGauge -= 100 / 90;
-            StaminaGauge -= 100 / 120;
+            StaminaGauge -= 100 / 120 * staminaPerSec;
             currentTime = 0;
         }
         //水分、満腹ゲージを90秒で0%になるようにしてください
