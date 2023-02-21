@@ -19,6 +19,9 @@ public class DebuffShowing : MonoBehaviour
     private GameObject player;
 
     private int DebuffNum = 0;//現在なっている状態異常の数
+    private int injure = 0;
+    private int stomach = 0;
+    private int catchCold = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +34,40 @@ public class DebuffShowing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //各状態異常のときにstatic変数に１入れる。
-        //DebuffNum = Statas.  + Statas.  + DestroyObject.
+        if (Status.injureflg == true)
+            injure = 1;
+        else
+            injure = 0;
 
+        if (DestoryObject.stomachPain != 0)
+            stomach = 1;
+        else
+            stomach = 0;
+
+        if (Status.coldflg == true)
+            catchCold = 1;
+        else
+            catchCold = 0;
+
+        //今なっている状態異常の数を検知(最大３)
+        DebuffNum = injure + stomach + catchCold;
+
+        //状態異常になっている数に応じてアイコンの場所を変更＆アイコンの画像を変える
         if (DebuffNum == 1)
         {
-            DebuffIcon1.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 2.0f);
-            //どの状態異常になっているのか検知して対応するsprite入れる
+            DebuffIcon1.SetActive(true);
 
+            DebuffIcon1.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 2.0f);
+
+            //どの状態異常になっているのか検知して対応するsprite入れる
+            if(injure == 1)
+                SR1.sprite = blood;
+
+            else if(stomach == 1)
+                SR1.sprite = stomachPain;
+
+            else if(catchCold == 1)
+                SR1.sprite = cold;
 
             DebuffIcon2.SetActive(false);
             DebuffIcon3.SetActive(false);
@@ -46,15 +75,38 @@ public class DebuffShowing : MonoBehaviour
         }
         else if (DebuffNum == 2)
         {
+            DebuffIcon1.SetActive(true);
+            DebuffIcon2.SetActive(true);
+
+
             DebuffIcon1.transform.position = new Vector2(player.transform.position.x - 0.3f, player.transform.position.y + 2.0f);
             DebuffIcon2.transform.position = new Vector2(player.transform.position.x + 0.7f, player.transform.position.y + 2.0f);
-            //どの状態異常になっているのか検知して対応するsprite入れる
 
+            //どの状態異常になっているのか検知して対応するsprite入れる
+            if (injure == 1 && stomach == 1)
+            {
+                SR1.sprite = blood;
+                SR2.sprite = stomachPain;
+            }
+            else if (injure == 1 && catchCold == 1)
+            {
+                SR1.sprite = blood;
+                SR2.sprite = cold;
+            }
+            else if (stomach == 1 && catchCold == 1)
+            {
+                SR1.sprite = stomachPain;
+                SR2.sprite = cold;
+            }
 
             DebuffIcon3.SetActive(false);
         }
         else if (DebuffNum == 3)
         {
+            DebuffIcon1.SetActive(true);
+            DebuffIcon2.SetActive(true);
+            DebuffIcon3.SetActive(true);
+
             DebuffIcon1.transform.position = new Vector2(player.transform.position.x - 0.8f, player.transform.position.y + 2.0f);
             DebuffIcon2.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 2.0f);
             DebuffIcon3.transform.position = new Vector2(player.transform.position.x + 0.9f, player.transform.position.y + 2.0f);

@@ -20,6 +20,7 @@ public class DestoryObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //• ’É‚Ìˆ—i5•b‚¤‚²‚¯‚È‚¢,30•b‚¨‚É‚¬‚èH‚×‚ç‚ê‚È‚¢j‚ð‘‚¢‚Ä‚¢‚é
         if (stomachPain != 0 && healStomachPainTime > 0)
         {
             healStomachPainTime -= Time.deltaTime;
