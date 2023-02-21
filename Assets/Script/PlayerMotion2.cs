@@ -15,7 +15,7 @@ public class PlayerMotion2 : MonoBehaviour
     private float walkForce = 100; //前進力
     private Vector3 cameraOffset; //カメラとの相対距離
     private bool slow = false; //スローダッシュフラグ
-    private int jumpCount = 0; //ジャンプ回数
+    public static int jumpCount = 0; //ジャンプ回数
     private float timeCount = 30f; //スローダッシュタイム
     public float staminaPoint = 1.0f;//スタミナ総量
     public float warterPoint = 1.0f;//水分総量
@@ -109,20 +109,22 @@ public class PlayerMotion2 : MonoBehaviour
         MainCamera.gameObject.transform.position = this.transform.position + cameraOffset;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Floor")
         {
             Distance.slope = 1f;
             Status.staminaPerSec = 1f;
         }
-        else if (col.gameObject.tag == "FloorUp")
+        if (col.gameObject.tag == "FloorUp")
         {
+            Debug.Log("up");
             Distance.slope = 1.2f;
             Status.staminaPerSec = 1.2f;
         }
-        else if (col.gameObject.tag == "FloorDown")
+        if (col.gameObject.tag == "FloorDown")
         {
+            Debug.Log("down");
             Status.staminaPerSec = 1f;
         }
 
