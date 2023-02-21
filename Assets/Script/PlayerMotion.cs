@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMotion : MonoBehaviour
 {
     //マクロ
-    public int jumpNum = 1; //空中でのジャンプ回数
+    /*public int jumpNum = 1; //空中でのジャンプ回数
     public float acceleration = 0.98f; //加速度
     public float setVelocity = 0f; //ジャンプ初速度
 
@@ -142,7 +142,7 @@ public class PlayerMotion : MonoBehaviour
         {
            warterPoint += 1.0f;//水分を1,0回復
         }
-    }
+    }*/
 
     
 }
