@@ -42,10 +42,12 @@ public class Distance : MonoBehaviour
         timer += Time.deltaTime;
 
         //距離の表示
+        if(distanceLabel != null)
         distanceLabel.text = "距離：" + distance.ToString("N1") + "m";
 
         //時間の表示
-        timeLabel.text = "経過時間：" + timer.ToString("F2");
+        if (timeLabel != null)
+            timeLabel.text = "経過時間：" + timer.ToString("F2");
 
         //Debug.Log(SPS);
     }

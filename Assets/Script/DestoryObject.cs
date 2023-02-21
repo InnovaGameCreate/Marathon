@@ -20,8 +20,6 @@ public class DestoryObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stomachPain);
-
         if (stomachPain != 0 && healStomachPainTime > 0)
         {
             healStomachPainTime -= Time.deltaTime;
@@ -41,7 +39,7 @@ public class DestoryObject : MonoBehaviour
     {
         
         Debug.Log("atatta");
-        if (col.gameObject.tag == "JumpRamp")
+        if (col.gameObject.CompareTag("JumpRamp"))
         {
             playerMotionCs.velocity = playerMotionCs.setVelocity * 1.1f;
             player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
@@ -50,34 +48,34 @@ public class DestoryObject : MonoBehaviour
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.tag == "Water")
+        if (col.gameObject.CompareTag("Water"))
         {
             Status.WaterGauge = 100;
             Destroy(col.gameObject);
         }
 
         //障害物関係
-        if (col.gameObject.tag == "ObstacleStone")
+        if (col.gameObject.CompareTag("ObstacleStone"))
         {
             Status.injuretime += 10;
             Status.injureflg = true;
             Destroy(col.gameObject);
         }
-
-        if (col.gameObject.tag == "ObstacleRottenOnigiri")
+        
+        if (col.gameObject.CompareTag("ObstacleRottenOnigiri"))
         {
             stomachPain = 1;
             healStomachPainTime = 30;
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.tag == "ObstacleRunner")//綴りミスきおつけて
+        if (col.gameObject.CompareTag("ObstacleRunner"))//綴りミスきおつけて
         {
             Distance.distance -= 1000;//走行距離の変数
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.tag == "Riceball")
+        if (col.gameObject.CompareTag("Riceball"))
         {
             if(stomachPain == 0)
             Status.SatietyGauge = 100;

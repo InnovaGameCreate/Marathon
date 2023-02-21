@@ -14,8 +14,8 @@ public class Weather : MonoBehaviour
 
     private GameObject player;
     public GameObject Rain;
-    //public GameObject Snow;
-    //public GameObject Wind;
+    public GameObject Snow;
+    public GameObject Wind;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +41,16 @@ public class Weather : MonoBehaviour
             else if(weatherNo != 3)
                 Rain.SetActive(false);
 
+            if (weatherNo == 4)
+                Wind.SetActive(true);
+            else if (weatherNo != 4)
+                Wind.SetActive(false);
+
+            if (weatherNo == 5)
+                Snow.SetActive(true);
+            else if (weatherNo != 5)
+                Snow.SetActive(false);
+
             Debug.Log(weatherNo);
         }
     }
@@ -48,11 +58,11 @@ public class Weather : MonoBehaviour
     int WeatherProbability(int no)
     {
         //返り値
-        int ret = 0;
+        int ret = 03;
 
         //ランダム値
         randomValue = Random.value;
-
+        
         //天気の決定
         switch (no)
         {
@@ -61,6 +71,7 @@ public class Weather : MonoBehaviour
             //曇り2
             //大雨3
             //暴風4
+            //極寒（雪）5 //実装予定
             case 0:
                 if (randomValue >= 0.95) ret = 4;
                 else if (randomValue >= 0.90) ret = 3;
@@ -89,7 +100,7 @@ public class Weather : MonoBehaviour
                 else ret = 0;
                 break;
         }
-
+        
         return ret;
     }
 }
