@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestoryObject : MonoBehaviour
 {
     public GameObject player;
-    private PlayerMotion playerMotionCs;
+    private PlayerMotion2 playerMotion2Cs;
 
     public static  int stomachPain = 0;//0:腹痛ナシ , 1:動けない状態 , 2:食べられない状態
     private float healStomachPainTime = 0;//腹痛が治るまで必要な時間
@@ -14,7 +14,7 @@ public class DestoryObject : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        playerMotionCs = player.GetComponent<PlayerMotion>();
+        playerMotion2Cs = player.GetComponent<PlayerMotion2>();
     }
 
     // Update is called once per frame
