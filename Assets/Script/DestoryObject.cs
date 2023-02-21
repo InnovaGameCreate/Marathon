@@ -39,10 +39,10 @@ public class DestoryObject : MonoBehaviour
     {
         
         Debug.Log("atatta");
-        if (col.gameObject.CompareTag("JumpRamp"))
+        if (col.gameObject.tag == "JumpRamp")
         {
             //playerMotionCs.velocity = playerMotionCs.setVelocity * 1.1f;
-            player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
+            //player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
             //PlayerMask.playerMove = 0;
             //playerMotionCs.jumpCount++; //‹ó’†‚Å‚ÌƒWƒƒƒ“ƒv‰ñ”
             Destroy(col.gameObject);

@@ -12,7 +12,7 @@ public class PlayerMotion2 : MonoBehaviour
 
     //変数
     private float playerSpeed = 0f; //プレイヤー移動スピード
-    private float walkForce = 10; //前進力
+    private float walkForce = 100; //前進力
     private Vector3 cameraOffset; //カメラとの相対距離
     private bool slow = false; //スローダッシュフラグ
     private int jumpCount = 0; //ジャンプ回数
