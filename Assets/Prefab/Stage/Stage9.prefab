@@ -516,6 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fine: {fileID: 21300000, guid: 338dfb9506eab5f49af3f8f3701f68ad, type: 3}
   cloudy: {fileID: 21300000, guid: b2445e21c9da58e49a11e9de7b71c819, type: 3}
+  hot: {fileID: 21300000, guid: f22dc4046e623a349ab57aeff1a8e99a, type: 3}
 --- !u!1 &4196710408745480173
 GameObject:
   m_ObjectHideFlags: 0

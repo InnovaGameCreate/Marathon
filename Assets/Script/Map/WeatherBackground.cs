@@ -7,8 +7,9 @@ public class WeatherBackground : MonoBehaviour
     private SpriteRenderer SR;
     [SerializeField] Sprite fine;
     [SerializeField] Sprite cloudy;
+    [SerializeField] Sprite hot;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,13 @@ public class WeatherBackground : MonoBehaviour
         //“Ü‚è2
         //‘å‰J3
         //–\•—4
-        if (Weather.weatherNo == 0 || Weather.weatherNo == 1)
+        if (Weather.weatherNo == 0)
         {
             SR.sprite = fine;
+        }
+        else if (Weather.weatherNo == 1)
+        {
+            SR.sprite = hot;
         }
         else
         {
