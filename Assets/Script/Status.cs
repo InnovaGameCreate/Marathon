@@ -23,8 +23,10 @@ public class Status : MonoBehaviour
     public float satiety_weather = 1;//食料ゲージの倍率
     public float water_weather = 1;//水分の倍率
     public float stamina_weather = 1;//スタミナの倍率
-    
 
+    //ダッシュによるスタミナの倍率
+    public static float staminaPerSec = 1f;
+    
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);//ランダムにするための宣言
@@ -107,7 +109,7 @@ public class Status : MonoBehaviour
 
             SatietyGauge -= (100f / 90f) * satiety_weather;
             WaterGauge -= (100f / 90f)* water_weather;
-            StaminaGauge -= (100f / 120f)* stamina_weather * stamina_cold;
+            StaminaGauge -= (100f / 120f)* stamina_weather * stamina_cold * staminaPerSec;
             HealthGauge -= 0;
             //水分、満腹ゲージを90秒で0%になるようにしてください
             //スタミナゲージ120秒で0になるようにしてください
