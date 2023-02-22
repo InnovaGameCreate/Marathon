@@ -2628,7 +2628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpNum: 1
-  jumpForce: 500
+  jumpForce: 800
   SlowTimeCounter: {fileID: 371180758}
   staminaPoint: 1
   warterPoint: 1
