@@ -13,16 +13,25 @@ public class PlayerMotion2 : MonoBehaviour
     //変数
     private float playerSpeed = 0f; //プレイヤー移動スピード
     private float walkForce = 100; //前進力
-    private Vector3 cameraOffset; //カメラとの相対距離
+    private float cameraOffset; //カメラとの相対距離
     private bool slow = false; //スローダッシュフラグ
     public static int jumpCount = 0; //ジャンプ回数
     private float timeCount = 30f; //スローダッシュタイム
     public float staminaPoint = 1.0f;//スタミナ総量
     public float warterPoint = 1.0f;//水分総量
 
+    //tmp
+    public static float jumpForceTmp;
+
     //コンポーネント・オブジェクト
     private Rigidbody2D rb;
     [SerializeField] GameObject MainCamera;
+    public static PlayerMotion2 ins;
+
+    void Awake()
+    {
+        ins = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +40,10 @@ public class PlayerMotion2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         //初期化
-        cameraOffset = MainCamera.gameObject.transform.position - this.transform.position; //相対距離取得
+        cameraOffset = MainCamera.gameObject.transform.position.x - this.transform.position.x; //相対距離取得
+
+        //tmp
+        jumpForceTmp = jumpForce;
     }
 
     // Update is called once per frame
@@ -106,11 +118,13 @@ public class PlayerMotion2 : MonoBehaviour
         playerSpeed = Distance.speed * Distance.slope * Distance.dash;
 
         //カメラ移動
-        MainCamera.gameObject.transform.position = this.transform.position + cameraOffset;
+        Vector3 vec = new Vector3(this.transform.position.x + cameraOffset, 12, -10);
+        MainCamera.gameObject.transform.position = vec;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        //床
         if (col.gameObject.tag == "Floor")
         {
             Distance.slope = 1f;
@@ -118,30 +132,39 @@ public class PlayerMotion2 : MonoBehaviour
         }
         if (col.gameObject.tag == "FloorUp")
         {
-            Debug.Log("up");
             Distance.slope = 1.2f;
             Status.staminaPerSec = 1.2f;
         }
         if (col.gameObject.tag == "FloorDown")
         {
-            Debug.Log("down");
             Status.staminaPerSec = 1f;
+        }
+
+        //アイテム
+        if (col.gameObject.tag == "Heal")
+        {
+            staminaPoint += 1.0f;//スタミナを1,0回復
+        }
+
+        if (col.gameObject.tag == "warter")
+        {
+            warterPoint += 1.0f;//水分を1,0回復
         }
 
         jumpCount = 0; //ジャンプ回数リセット
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay2D(Collider2D col)
     {
-
-        if (other.gameObject.tag == "Heal")
+        //下り坂制御
+        if (col.gameObject.tag == "FloorDown")
         {
-            staminaPoint += 1.0f;//スタミナを1,0回復
+            rb.AddForce(Vector2.down * (50 - rb.velocity.y) * 50);
         }
+    }
 
-        if (other.gameObject.tag == "warter")
-        {
-            warterPoint += 1.0f;//水分を1,0回復
-        }
+    public void PlayerForce(Vector2 vec, float force)
+    {
+        rb.AddForce(vec * force);
     }
 }

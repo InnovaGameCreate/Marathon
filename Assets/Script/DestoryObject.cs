@@ -45,6 +45,8 @@ public class DestoryObject : MonoBehaviour
             //player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
             //PlayerMask.playerMove = 0;
             //playerMotionCs.jumpCount++; //空中でのジャンプ回数
+            PlayerMotion2.jumpCount++; //空中でのジャンプ回数
+            PlayerMotion2.ins.PlayerForce(Vector2.up, PlayerMotion2.jumpForceTmp);
             Destroy(col.gameObject);
         }
 
