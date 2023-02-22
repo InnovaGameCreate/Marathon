@@ -15,10 +15,12 @@ public class PlayerMotion : MonoBehaviour
     public float velocity = 0f; //降下速度
     private float timeCount = 30f; //スローダッシュのタイムカウント
     public Text SlowTimeCounter;//スローダッシュの残り時間を表示するテキスト
-    private bool slow = false; //スローダッシュフラグ
     public static float stamina = 1.0f; //スタミナ消費量
     public float staminaPoint = 1.0f;//スタミナ総量
     public float warterPoint = 1.0f;//水分総量
+    private int dashNum = 1; //ダッシュ番号
+    private bool slowDash = true; //スローダッシュフラグ
+    private bool quickDash = true; //クイックダッシュフラグ
 
     [SerializeField] GameObject MainCamera;
 
@@ -36,26 +38,51 @@ public class PlayerMotion : MonoBehaviour
         this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
         MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
 
-        //スピード変更
-        if (InputOperation.input.arp && timeCount >= 0)
+        //ダッシュ切り替え
+        if (InputOperation.input.arp && slowDash) dashNum = 0;
+        if (InputOperation.input.srp) dashNum = 1;
+        if (InputOperation.input.drp && quickDash) dashNum = 2;
+
+        //条件判定
+        if (slowDash)
         {
-            slow = true;
-            Distance.dash = 0.5f;
+            timeCount -= Time.deltaTime; //時間計測
+
+            if (timeCount < 0)
+            {
+                slowDash = false;
+                dashNum = 1;
+            }
+
         }
-        if (InputOperation.input.srp)
+        if (quickDash)
         {
-            slow = false;
-            Distance.dash = 1f;
+            if (Status.StaminaGauge == 0)
+            {
+                quickDash = false;
+                dashNum = 1;
+            }
         }
-        if (InputOperation.input.drp)
+
+        //ダッシュ
+        switch (dashNum)
         {
-            slow = false;
-            Distance.dash = 1.5f;
+            case 0:
+                Distance.dash = 0.5f;
+                Status.staminaPerSec = 0;
+                break;
+            case 1:
+                Distance.dash = 1f;
+                Status.staminaPerSec = Distance.dash * Distance.slope;
+                break;
+            case 2:
+                Distance.dash = 1.5f;
+                Status.staminaPerSec = Distance.dash * Distance.slope;
+                break;
         }
 
         if (DestoryObject.stomachPain == 1)
         {
-            slow = false;
             Distance.dash = 0f;
         }
 
@@ -96,23 +123,6 @@ public class PlayerMotion : MonoBehaviour
                 Status.staminaPerSec = 1f;
                 break;
         }
-
-        //スローダッシュのタイムカウント
-        if (slow)
-        {
-            //時間計測
-            timeCount -= Time.deltaTime;
-
-            //時間を使い切る
-            if (timeCount < 0)
-            {
-                slow = false;
-                Distance.dash = 1f;
-            }
-        }
-
-        //速度割合の計算
-        Status.staminaPerSec = Distance.dash * Distance.slope;
 
         //リピート管理
         InputOperation.input.wrp = false;
