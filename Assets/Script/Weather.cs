@@ -73,10 +73,11 @@ public class Weather : MonoBehaviour
             //–\•—4
             //‹ÉŠ¦iáj5 //À‘•—\’è
             case 0:
-                if (randomValue >= 0.95) ret = 4;
-                else if (randomValue >= 0.90) ret = 3;
-                else if (randomValue >= 0.80) ret = 2;
-                else if (randomValue >= 0.70) ret = 1;
+                if (randomValue >= 0.95) ret = 5;
+                else if (randomValue >= 0.90) ret = 4;
+                else if (randomValue >= 0.85) ret = 3;
+                else if (randomValue >= 0.75) ret = 2;
+                else if (randomValue >= 0.60) ret = 1;
                 else ret = 0;           
                 break;
             case 1:
@@ -87,16 +88,18 @@ public class Weather : MonoBehaviour
                 else ret = 0;
                 break;
             case 2:
-                if (randomValue >= 0.70) ret = 4;
+                if (randomValue >= 0.80) ret = 5;
+                else if (randomValue >= 0.60) ret = 4;
                 else if (randomValue >= 0.40) ret = 3;
                 else if (randomValue >= 0.30) ret = 1;
                 else ret = 0;
                 break;
             case 3:
             case 4:
-                if (randomValue >= 0.90) ret = 4;
-                else if (randomValue >= 0.80) ret = 3;
-                else if (randomValue >= 0.70) ret = 1;
+                if (randomValue >= 0.90) ret = 5;
+                else if (randomValue >= 0.80) ret = 4;
+                else if (randomValue >= 0.70) ret = 3;
+                else if (randomValue >= 0.50) ret = 1;
                 else ret = 0;
                 break;
         }
