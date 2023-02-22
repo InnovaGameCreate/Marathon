@@ -18,7 +18,7 @@ public class MapCreator : MonoBehaviour
     private Vector2 playerPos;
 
     public static bool CreateStageFlg = false;//trueのときにステージを作成
-    private int stageCreateNum = 0;
+    public int stageCreateNum = 0;
     private int RandomStageNum;
 
     // Start is called before the first frame update
@@ -33,36 +33,44 @@ public class MapCreator : MonoBehaviour
     {
         playerPos.x = player.transform.position.x;
 
-        if ((stageCreateNum +1 % 5 != 0) && (playerPos.x > 30 + 80 * stageCreateNum))
+        if (playerPos.x > 30 + 80 * stageCreateNum)
         {
             RandomStageNum = Random.Range(1, 9);
-            switch (RandomStageNum)
+            if (stageCreateNum % 5 != 0)
             {
-                case 1:
-                    Instantiate(stage1, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 2:
-                    Instantiate(stage2, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 3:
-                    Instantiate(stage3, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 4:
-                    Instantiate(stage4, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 5:
-                    Instantiate(stage5, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 6:
-                    Instantiate(stage6, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 7:
-                    Instantiate(stage7, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
-                case 8:
-                    Instantiate(stage8, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
-                    break;
+                switch (RandomStageNum)
+                {
+                    case 1:
+                        Instantiate(stage1, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(stage2, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(stage3, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(stage4, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(stage5, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 6:
+                        Instantiate(stage6, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 7:
+                        Instantiate(stage7, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                    case 8:
+                        Instantiate(stage8, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+                        break;
+                }
             }
+            else if (stageCreateNum % 5 == 0)
+            {
+                Instantiate(stage3, new Vector2(80 + 80 * stageCreateNum, 0), Quaternion.identity);
+            }
+           
             stageCreateNum++;
         }
 
