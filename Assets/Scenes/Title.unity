@@ -1374,7 +1374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741841049}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.4, y: 0.16, z: -1000}
+  m_LocalPosition: {x: 10.400002, y: 0.16, z: -1000}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1868,7 +1868,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 10
-  m_Text: "\u30DE\u30E9\u30BD\u30F3"
+  m_Text: M4rason
 --- !u!222 &2100625475
 CanvasRenderer:
   m_ObjectHideFlags: 0
