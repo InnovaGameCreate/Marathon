@@ -79,7 +79,6 @@ public class Status : MonoBehaviour
                         coldflg = true;
 
                     Debug.Log("êîíl:"); 
-                    
                 }
             }
 
@@ -154,6 +153,7 @@ public class Status : MonoBehaviour
             StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 100);
             HealthGauge = Mathf.Clamp(HealthGauge, 0, 100);
 
+            Debug.Log(DestoryObject.energyCount);
             currentTime = 0;
         }
     }

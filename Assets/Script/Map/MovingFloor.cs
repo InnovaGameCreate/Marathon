@@ -35,7 +35,7 @@ public class MovingFloor : MonoBehaviour
         {
             if (Pre_thisPos.x + length > thisPos.x)
             {
-                this.gameObject.transform.Translate(Distance.speed * Distance.slope * Time.deltaTime, 0.0f, 0.0f);
+                this.gameObject.transform.Translate(Distance.speed * Distance.slope * DestoryObject.energyCount *Time.deltaTime, 0.0f, 0.0f);
             }
         }
     }

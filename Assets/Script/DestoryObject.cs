@@ -11,6 +11,7 @@ public class DestoryObject : MonoBehaviour
     private float healStomachPainTime = 0;//腹痛が治るまで必要な時間
 
     public static bool energyflg = false;
+    public static int energyCount = 1;
     private float energyTime = 0;
 
     // Start is called before the first frame update
@@ -39,13 +40,13 @@ public class DestoryObject : MonoBehaviour
         }
 
         //エナジー状態を解除するためのタイマー
-        if (energyflg == true)
+        if (energyflg == true && energyTime > 0)
         {
             energyTime -= Time.deltaTime;
 
-            if (energyTime <= 0)
+            if (energyTime <= 0f)
             {
-                Distance.speed = 4f;
+                energyCount = 1;
                 energyflg = false;
             }
                 
@@ -104,7 +105,7 @@ public class DestoryObject : MonoBehaviour
         if (col.gameObject.CompareTag("EnergyDrink"))
         {
             Status.StaminaGauge += 10;
-            Distance.speed *= 2;
+            energyCount++;
             energyTime += 20;
             energyflg = true;
 

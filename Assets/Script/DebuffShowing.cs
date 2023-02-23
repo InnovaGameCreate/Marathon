@@ -15,6 +15,8 @@ public class DebuffShowing : MonoBehaviour
     [SerializeField] GameObject DebuffIcon1;
     [SerializeField] GameObject DebuffIcon2;
     [SerializeField] GameObject DebuffIcon3;
+    [SerializeField] GameObject DebuffIcon4;
+    [SerializeField] GameObject DebuffIcon5;
 
     private GameObject player;
 
@@ -49,7 +51,8 @@ public class DebuffShowing : MonoBehaviour
         else
             catchCold = 0;
 
-        //今なっている状態異常の数を検知(最大３)
+
+        //今なっている状態異常の数を検知(最大4)
         DebuffNum = injure + stomach + catchCold;
 
         //状態異常になっている数に応じてアイコンの場所を変更＆アイコンの画像を変える
@@ -71,7 +74,6 @@ public class DebuffShowing : MonoBehaviour
 
             DebuffIcon2.SetActive(false);
             DebuffIcon3.SetActive(false);
-
         }
         else if (DebuffNum == 2)
         {
@@ -120,6 +122,18 @@ public class DebuffShowing : MonoBehaviour
             DebuffIcon1.SetActive(false);
             DebuffIcon2.SetActive(false);
             DebuffIcon3.SetActive(false);
+        }
+
+        //エネルギッシュの時に目に炎を表示させる
+        if (DestoryObject.energyflg == true)
+        {
+            DebuffIcon4.SetActive(true);
+            DebuffIcon5.SetActive(true);
+        }
+        else if (DestoryObject.energyflg == false)
+        {
+            DebuffIcon4.SetActive(false);
+            DebuffIcon5.SetActive(false);
         }
     }
 }

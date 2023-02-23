@@ -18,10 +18,10 @@ public class RandomGenerator : MonoBehaviour
     public GameObject obstacle1;
     public GameObject obstacle2;
     public GameObject obstacle3;
+    public GameObject obstacle4;
 
     public GameObject item1;
     public GameObject item2;
-    //public GameObject item3;
 
     [Tooltip("è·äQï®Çê∂ê¨Ç∑ÇÈ")]
     public bool obstacleFlag;
@@ -39,7 +39,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int decideObstacle = Random.Range(0, 3);
+                int decideObstacle = Random.Range(0, 4);
 
                 switch (decideObstacle)
                 {
@@ -52,7 +52,9 @@ public class RandomGenerator : MonoBehaviour
                     case 2:
                         Instantiate(obstacle3, new Vector2(random, Y), Quaternion.identity);
                         break;
-
+                    case 3:
+                        Instantiate(obstacle4, new Vector2(random, Y), Quaternion.identity);
+                        break;
                 }
             }
         }
@@ -62,7 +64,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int itemObstacle = Random.Range(0, 2);
+                int itemObstacle = Random.Range(0, 3);
 
                 switch (itemObstacle)
                 {
@@ -72,10 +74,6 @@ public class RandomGenerator : MonoBehaviour
                     case 1:
                         Instantiate(item2, new Vector2(random, Y), Quaternion.identity);
                         break;
-                   /* case 2:
-                        Instantiate(item3, new Vector2(random, Y), Quaternion.identity);
-                        break;*/
-
                 }
             }
         }
@@ -85,7 +83,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int itemObstacle = Random.Range(0, 5);
+                int itemObstacle = Random.Range(0, 6);
 
                 switch (itemObstacle)
                 {
@@ -95,9 +93,6 @@ public class RandomGenerator : MonoBehaviour
                     case 1:
                         Instantiate(item2, new Vector2(random, Y), Quaternion.identity);
                         break;
-                    /*case 2:
-                        Instantiate(item3, new Vector2(random, Y), Quaternion.identity);
-                        break;*/
                     case 2:
                         Instantiate(obstacle1, new Vector2(random, Y), Quaternion.identity);
                         break;
@@ -106,6 +101,9 @@ public class RandomGenerator : MonoBehaviour
                         break;
                     case 4:
                         Instantiate(obstacle3, new Vector2(random, Y), Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(obstacle4, new Vector2(random, Y), Quaternion.identity);
                         break;
                 }
             }
