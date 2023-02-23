@@ -106,7 +106,6 @@ public class Weather : MonoBehaviour
                 else ret = 0;
                 break;
         }
-
         return ret;
     }
 }

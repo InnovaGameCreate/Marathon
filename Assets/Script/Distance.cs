@@ -47,7 +47,7 @@ public class Distance : MonoBehaviour
 
         //時間の表示
         if (timeLabel != null)
-            timeLabel.text = "経過時間：" + timer.ToString("F2");
+            timeLabel.text = "経過時間：" + timer.ToString("0") + "秒";
 
         //Debug.Log(SPS);
     }
