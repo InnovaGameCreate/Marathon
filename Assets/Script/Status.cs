@@ -10,13 +10,13 @@ public class Status : MonoBehaviour
     public static float HealthGauge;//体力ゲージ水分ゲージが0のとき,スタミナゲージが0のときそれぞれ毎秒2ずつ減らしてください。重複可能
     private float currentTime = 0f;
 
-    public static bool injureflg = false;//怪我状態か否か
-    public static int injuretime = 0;//怪我状態である時間
+    public static bool injureflg;//怪我状態か否か
+    public static int injuretime;//怪我状態である時間
     private int healInjureSecond = 0;//怪我が治るまでにかかる時間のこと
 
-    public static bool coldflg = false;//風邪状態か否か
-    private int coldJudgeTime = 0;//5秒で1回風邪状態にするか判定させるための変数
-    private int healColdJudgeTime = 0;//5秒で１回風邪状態が治るか判定させる為の変数
+    public static bool coldflg;//風邪状態か否か
+    private int coldJudgeTime;//5秒で1回風邪状態にするか判定させるための変数
+    private int healColdJudgeTime;//5秒で１回風邪状態が治るか判定させる為の変数
     private float stamina_cold = 1.0f;//風邪状態によるスタミナの倍率
 
     //天気による倍率の変数
@@ -35,6 +35,15 @@ public class Status : MonoBehaviour
         WaterGauge = 100f;
         StaminaGauge = 100f;
         HealthGauge = 100f;
+
+        injureflg = false;
+        injuretime = 0;
+        healInjureSecond = 0;
+
+        coldflg = false;
+        coldJudgeTime = 0;
+        healColdJudgeTime = 0;
+
     }
 
     void Update()
