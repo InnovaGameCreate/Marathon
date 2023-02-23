@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2650321351922128177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4680056586293086708}
+  - component: {fileID: 5246245637661992617}
+  m_Layer: 0
+  m_Name: RandomGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4680056586293086708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650321351922128177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 50.02, y: 5.54, z: -0.4133234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5505111023283378575}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5246245637661992617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650321351922128177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbff190de0efdca459ea57780ed68881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateRange: 20
+  generateNumber: 5
+  Y: 5.5
+  obstacle1: {fileID: 8809540012039157945, guid: c8324b2b06c97f140b1d3780c642745a, type: 3}
+  obstacle2: {fileID: 9172334793145541293, guid: 4ad2e302bc2df864e9bce368225df89d, type: 3}
+  obstacle3: {fileID: 4062474523809248697, guid: 34bc21e508343f144a3227034285850d, type: 3}
+  obstacle4: {fileID: 4548027836060362412, guid: 501e8049bf41cdc4a9fbd6b8116976cf, type: 3}
+  item1: {fileID: 1520925441063764464, guid: 01a43ebd4604d3b4d849d33406e2f2e3, type: 3}
+  item2: {fileID: 2206406632724162477, guid: 611ff4256f28dec43af52d536a816488, type: 3}
+  obstacleFlag: 1
+  itemFlag: 0
 --- !u!1 &5505111021518767032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1484,7 @@ Transform:
   - {fileID: 5505111022975057244}
   - {fileID: 5505111021791879566}
   - {fileID: 3530567328910681294}
+  - {fileID: 4680056586293086708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1497,6 +1553,7 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   obstacle3: {fileID: 0}
+  obstacle4: {fileID: 0}
   item1: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
   item2: {fileID: 7847324275818143758, guid: 611ff4256f28dec43af52d536a816488, type: 3}
   obstacleFlag: 0

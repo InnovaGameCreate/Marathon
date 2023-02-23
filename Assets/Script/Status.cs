@@ -68,8 +68,8 @@ public class Status : MonoBehaviour
             else
                 stamina_weather = 1.0f;
 
-            //‘å‰J‚Ì‚Æ‚«•—×ó‘Ô‚É‚È‚éŠm—¦(5•b‚Å20%)
-            if (Weather.weatherNo == 3)
+            //‘å‰J,‘åá‚Ì‚Æ‚«•—×ó‘Ô‚É‚È‚éŠm—¦(5•b‚Å20%)
+            if (Weather.weatherNo == 3 || Weather.weatherNo == 5)
             {          
                 if (coldflg == false && coldJudgeTime % 5 == 0)
                 {  
@@ -79,7 +79,6 @@ public class Status : MonoBehaviour
                         coldflg = true;
 
                     Debug.Log("”’l:"); 
-                    
                 }
             }
 
@@ -130,6 +129,10 @@ public class Status : MonoBehaviour
                 HealthGauge = HealthGauge - 2;
             }
             //…•ªƒQ[ƒW‚ª‚O‚Ì–ˆ•b‚Q‚¸‚ÂŒ»Û
+            if (SatietyGauge <= 0)
+            {
+                StaminaGauge--;
+            }
 
             
             if (injureflg == true)
@@ -150,6 +153,7 @@ public class Status : MonoBehaviour
             StaminaGauge = Mathf.Clamp(StaminaGauge, 0, 100);
             HealthGauge = Mathf.Clamp(HealthGauge, 0, 100);
 
+            Debug.Log(DestoryObject.energyCount);
             currentTime = 0;
         }
     }
