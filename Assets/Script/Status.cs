@@ -94,6 +94,7 @@ public class Status : MonoBehaviour
             if (coldflg == true)
             {
                 healColdJudgeTime++;
+                StaminaGauge -= 2;
                 if (healColdJudgeTime % 5 == 0)
                 {
                     int random = Random.Range(0, 101);
