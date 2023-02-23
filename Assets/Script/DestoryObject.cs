@@ -7,18 +7,25 @@ public class DestoryObject : MonoBehaviour
     public GameObject player;
     private PlayerMotion playerMotionCs;
 
-    public static  int stomachPain = 0;//0:腹痛ナシ , 1:動けない状態 , 2:食べられない状態
-    private float healStomachPainTime = 0;//腹痛が治るまで必要な時間
+    public static  int stomachPain;//0:腹痛ナシ , 1:動けない状態 , 2:食べられない状態
+    private float healStomachPainTime;//腹痛が治るまで必要な時間
 
-    public static bool energyflg = false;
-    public static int energyCount = 1;
-    private float energyTime = 0;
+    public static bool energyflg;
+    public static int energyCount;
+    private float energyTime;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         playerMotionCs = player.GetComponent<PlayerMotion>();
+
+        stomachPain = 0;
+        healStomachPainTime = 0;
+
+        energyflg = false;
+        energyCount = 1;
+        energyTime = 0;
     }
 
     // Update is called once per frame
@@ -105,7 +112,7 @@ public class DestoryObject : MonoBehaviour
         if (col.gameObject.CompareTag("EnergyDrink"))
         {
             Status.StaminaGauge += 10;
-            energyCount++;
+            energyCount = 2;
             energyTime += 20;
             energyflg = true;
 
