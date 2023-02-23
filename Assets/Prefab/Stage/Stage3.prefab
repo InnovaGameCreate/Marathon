@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateRange: 40
-  generateNumber: 3
+  generateNumber: 5
   Y: 6
   obstacle1: {fileID: 9172334793145541293, guid: 4ad2e302bc2df864e9bce368225df89d, type: 3}
   obstacle2: {fileID: 8809540012039157945, guid: c8324b2b06c97f140b1d3780c642745a, type: 3}

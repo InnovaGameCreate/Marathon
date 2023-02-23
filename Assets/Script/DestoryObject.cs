@@ -10,6 +10,9 @@ public class DestoryObject : MonoBehaviour
     public static  int stomachPain = 0;//0:腹痛ナシ , 1:動けない状態 , 2:食べられない状態
     private float healStomachPainTime = 0;//腹痛が治るまで必要な時間
 
+    public static bool energyflg = false;
+    private float energyTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,20 @@ public class DestoryObject : MonoBehaviour
             if (healStomachPainTime <= 0f)
                 stomachPain = 0;
         }
+
+        //エナジー状態を解除するためのタイマー
+        if (energyflg == true)
+        {
+            energyTime -= Time.deltaTime;
+
+            if (energyTime <= 0)
+            {
+                Distance.speed = 4f;
+                energyflg = false;
+            }
+                
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -42,7 +59,7 @@ public class DestoryObject : MonoBehaviour
         Debug.Log("atatta");
         if (col.gameObject.CompareTag("JumpRamp"))
         {
-            playerMotionCs.velocity = playerMotionCs.setVelocity * 1.1f;
+            playerMotionCs.velocity = playerMotionCs.setVelocity * 1.2f;
             player.gameObject.transform.Translate(0.0f, 0.2f, 0.0f);
             PlayerMask.playerMove = 0;
             playerMotionCs.jumpCount++; //空中でのジャンプ回数
@@ -80,6 +97,16 @@ public class DestoryObject : MonoBehaviour
         {
             if(stomachPain == 0)
             Status.SatietyGauge = 100;
+
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.CompareTag("EnergyDrink"))
+        {
+            Status.StaminaGauge += 10;
+            Distance.speed *= 2;
+            energyTime += 20;
+            energyflg = true;
 
             Destroy(col.gameObject);
         }
