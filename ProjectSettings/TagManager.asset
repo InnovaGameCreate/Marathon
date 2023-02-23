@@ -12,6 +12,7 @@ TagManager:
   - Water
   - JumpRamp
   - Riceball
+  - EnergyDrink
   layers:
   - Default
   - TransparentFX
