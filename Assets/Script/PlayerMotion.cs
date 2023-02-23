@@ -21,6 +21,7 @@ public class PlayerMotion : MonoBehaviour
     private int dashNum = 1; //ダッシュ番号
     private bool slowDash = true; //スローダッシュフラグ
     private bool quickDash = true; //クイックダッシュフラグ
+    private  bool grav = false; //重力フラグ
 
     public static float windDebuff;
 
@@ -31,6 +32,16 @@ public class PlayerMotion : MonoBehaviour
     void Start()
     {
         windDebuff = 1.0f;
+    }
+
+    void FixedUpdate()
+    {
+        //重力
+        if (grav)
+        {
+            velocity -= acceleration * Time.deltaTime;
+            this.gameObject.transform.Translate(0.0f, velocity, 0.0f);
+        }
     }
 
     // Update is called once per frame
@@ -104,38 +115,42 @@ public class PlayerMotion : MonoBehaviour
             Distance.dash = 0f;
         }
 
-        //ジャンプ
-        if (InputOperation.input.wrp && jumpCount < jumpNum && DestoryObject.stomachPain != 1)
-        {
-            velocity = setVelocity;
-            this.gameObject.transform.Translate(0.0f, 0.1f, 0.0f);
-            PlayerMask.playerMove = 0;
-            jumpCount++; //空中でのジャンプ回数
-        }
-
         //プレイヤー上下移動
         switch (PlayerMask.playerMove)
         {
             case 0:
+                grav = true;
                 //Debug.Log("gravity");
-                velocity -= acceleration * Time.deltaTime;
-                this.gameObject.transform.Translate(0.0f, velocity, 0.0f); 
+                //velocity -= acceleration * Time.deltaTime;
+                //this.gameObject.transform.Translate(0.0f, velocity, 0.0f); 
                 //jumpCount = 1;
                 break;
             case 1:
+                grav = false;
                 velocity = 0;
                 jumpCount = 0;
                 Distance.slope = 1f;
                 break;
             case 2:
+                grav = false;
                 //Debug.Log("up");
                 this.gameObject.transform.Translate(0.0f, 0.15f, 0.0f);//0.15
                 Distance.slope = 1.2f;
                 break;
             case 3:
+                grav = false;
                 //Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.01f, 0.0f);
                 break;
+        }
+
+        //ジャンプ
+        if (InputOperation.input.wrp && jumpCount < jumpNum && DestoryObject.stomachPain != 1)
+        {
+            velocity = setVelocity;
+            this.gameObject.transform.Translate(0.0f, 1f, 0.0f);
+            PlayerMask.playerMove = 0;
+            jumpCount++; //空中でのジャンプ回数
         }
 
         //リピート管理
