@@ -50,6 +50,7 @@ MonoBehaviour:
   obstacle1: {fileID: 8809540012039157945, guid: c8324b2b06c97f140b1d3780c642745a, type: 3}
   obstacle2: {fileID: 9172334793145541293, guid: 4ad2e302bc2df864e9bce368225df89d, type: 3}
   obstacle3: {fileID: 4062474523809248697, guid: 34bc21e508343f144a3227034285850d, type: 3}
+  obstacle4: {fileID: 4548027836060362412, guid: 501e8049bf41cdc4a9fbd6b8116976cf, type: 3}
   item1: {fileID: 1520925441063764464, guid: 01a43ebd4604d3b4d849d33406e2f2e3, type: 3}
   item2: {fileID: 2206406632724162477, guid: 611ff4256f28dec43af52d536a816488, type: 3}
   obstacleFlag: 1
@@ -1552,6 +1553,7 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   obstacle3: {fileID: 0}
+  obstacle4: {fileID: 0}
   item1: {fileID: 2466730855400495384, guid: ebe2c9823307d7347a29dd511672dfb5, type: 3}
   item2: {fileID: 7847324275818143758, guid: 611ff4256f28dec43af52d536a816488, type: 3}
   obstacleFlag: 0

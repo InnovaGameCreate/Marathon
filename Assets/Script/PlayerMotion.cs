@@ -35,31 +35,37 @@ public class PlayerMotion : MonoBehaviour
     void Update()
     {
         //前進
-        this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
-        MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * Time.deltaTime, 0.0f, 0.0f);
+        this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount  * Time.deltaTime, 0.0f, 0.0f);
+        MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * Time.deltaTime, 0.0f, 0.0f);
 
         //ダッシュ切り替え
-        if (InputOperation.input.arp && slowDash) dashNum = 0;
+        if (InputOperation.input.arp && slowDash && DestoryObject.energyflg != true) dashNum = 0;
         if (InputOperation.input.srp) dashNum = 1;
         if (InputOperation.input.drp && quickDash) dashNum = 2;
 
         //条件判定
         if (slowDash)
         {
-            timeCount -= Time.deltaTime; //時間計測
-
             if (timeCount < 0)
             {
                 slowDash = false;
                 dashNum = 1;
             }
-
         }
-        if (quickDash)
+
+        if (quickDash == true)
         {
-            if (Status.StaminaGauge == 0)
+            if (Status.StaminaGauge <= 0)
             {
                 quickDash = false;
+                dashNum = 1;
+            }
+        }
+        else
+        {
+            if (Status.StaminaGauge > 0)
+            {
+                quickDash = true;
                 dashNum = 1;
             }
         }
@@ -68,6 +74,7 @@ public class PlayerMotion : MonoBehaviour
         switch (dashNum)
         {
             case 0:
+                timeCount -= Time.deltaTime; //時間計測
                 Distance.dash = 0.5f;
                 Status.staminaPerSec = 0;
                 break;
@@ -85,7 +92,6 @@ public class PlayerMotion : MonoBehaviour
         {
             Distance.dash = 0f;
         }
-
 
         //ジャンプ
         if (InputOperation.input.wrp && jumpCount < jumpNum && DestoryObject.stomachPain != 1)
@@ -130,10 +136,9 @@ public class PlayerMotion : MonoBehaviour
         InputOperation.input.srp = false;
         InputOperation.input.drp = false;
 
-
         SlowTimeCounter.text = "スロー残り時間：" + timeCount.ToString("N1");
 
-        if (this.transform.position.y < 4.0f)
+        if (this.transform.position.y < 5.0f)
         {
             Status.HealthGauge = 0;
         }
