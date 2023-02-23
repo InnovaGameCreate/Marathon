@@ -31,12 +31,12 @@ public class DestoryObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //• ’É‚Ìˆ—i5•b‚¤‚²‚¯‚È‚¢,30•b‚¨‚É‚¬‚èH‚×‚ç‚ê‚È‚¢j‚ð‘‚¢‚Ä‚¢‚é
+        //• ’É‚Ìˆ—i5•b‚¤‚²‚¯‚È‚¢,20•b‚¨‚É‚¬‚èH‚×‚ç‚ê‚È‚¢j‚ð‘‚¢‚Ä‚¢‚é
         if (stomachPain != 0 && healStomachPainTime > 0)
         {
             healStomachPainTime -= Time.deltaTime;
 
-            if (stomachPain == 1 && healStomachPainTime <= 25f)
+            if (stomachPain == 1 && healStomachPainTime <= 15f)
             {
                 Distance.dash = 1.0f;
                 stomachPain = 2;
@@ -91,7 +91,7 @@ public class DestoryObject : MonoBehaviour
         if (col.gameObject.CompareTag("ObstacleRottenOnigiri"))
         {
             stomachPain = 1;
-            healStomachPainTime = 30;
+            healStomachPainTime = 20;
             Destroy(col.gameObject);
         }
 
@@ -113,7 +113,7 @@ public class DestoryObject : MonoBehaviour
         {
             Status.StaminaGauge += 10;
             energyCount = 2;
-            energyTime += 20;
+            energyTime += 10;
             energyflg = true;
 
             Destroy(col.gameObject);

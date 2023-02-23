@@ -8,8 +8,8 @@ public class Weather : MonoBehaviour
     public int CycleTime = 60; //周期タイム
 
     //変数
-    public static int weatherNo = 0; //天気No
-    private float timeCount = 0f; //タイムカウント
+    public static int weatherNo; //天気No
+    private float timeCount; //タイムカウント
     private float randomValue; //確率値
 
     private GameObject player;
@@ -20,6 +20,8 @@ public class Weather : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        weatherNo = 0;
+        timeCount = 0f;
     }
 
     // Update is called once per frame

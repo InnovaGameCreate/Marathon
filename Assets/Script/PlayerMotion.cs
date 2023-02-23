@@ -22,21 +22,31 @@ public class PlayerMotion : MonoBehaviour
     private bool slowDash = true; //スローダッシュフラグ
     private bool quickDash = true; //クイックダッシュフラグ
 
+    private float windDebuff;
+
     [SerializeField] GameObject MainCamera;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        windDebuff = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Weather.weatherNo == 5)
+        {
+            windDebuff = 0.8f;
+        }
+        else
+        {
+            windDebuff = 1.0f;
+        }
         //前進
-        this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount  * Time.deltaTime, 0.0f, 0.0f);
-        MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * Time.deltaTime, 0.0f, 0.0f);
+        this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * windDebuff* Time.deltaTime, 0.0f, 0.0f);
+        MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * windDebuff * Time.deltaTime, 0.0f, 0.0f);
 
         //ダッシュ切り替え
         if (InputOperation.input.arp && slowDash && DestoryObject.energyflg != true) dashNum = 0;
@@ -115,18 +125,15 @@ public class PlayerMotion : MonoBehaviour
                 velocity = 0;
                 jumpCount = 0;
                 Distance.slope = 1f;
-                Status.staminaPerSec = 1f;
                 break;
             case 2:
                 //Debug.Log("up");
                 this.gameObject.transform.Translate(0.0f, 0.15f, 0.0f);//0.15
                 Distance.slope = 1.2f;
-                Status.staminaPerSec = 1.2f;
                 break;
             case 3:
                 //Debug.Log("down");
                 this.gameObject.transform.Translate(0.0f, -0.01f, 0.0f);
-                Status.staminaPerSec = 1f;
                 break;
         }
 

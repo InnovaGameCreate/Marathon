@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Distance : MonoBehaviour
 {
     //マクロ
-    public static float speed = 4f; // m/s基本スピード
+    public static float speed = 6f; // m/s基本スピード4
 
     //変数
     public static float slope = 1f; //坂道のスピード倍率
