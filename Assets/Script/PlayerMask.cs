@@ -29,7 +29,7 @@ public class PlayerMask : MonoBehaviour
         rightLeg.rect1 = new Vector2(0.49f, -0.99f);
         rightLeg.rect2 = new Vector2(0.5f, -1f);
         pad.rect1 = new Vector2(-0.55f, -1f);
-        pad.rect2 = new Vector2(0.55f, -1.01f);
+        pad.rect2 = new Vector2(0.55f, -1.1f);
     }
 
     // Update is called once per frame
