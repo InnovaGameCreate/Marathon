@@ -333,6 +333,7 @@ MonoBehaviour:
   title: {fileID: 8300000, guid: 6f38541bc21a9914c8dde38db87c8f21, type: 3}
   main: {fileID: 8300000, guid: a8acfb97c328e5f47a7d393f08040ccd, type: 3}
   result: {fileID: 8300000, guid: 1e27157d308e06246be5cd4427e890a6, type: 3}
+  lastSceneName: 
 --- !u!4 &289152512
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,7 +1173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 10
-  m_Text: "\u30DE\u30E9\u30BD\u30BD"
+  m_Text: "\u30DE\u30E9\u30BD\u30F3"
 --- !u!222 &2100625475
 CanvasRenderer:
   m_ObjectHideFlags: 0
