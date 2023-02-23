@@ -64,7 +64,7 @@ public class RandomGenerator : MonoBehaviour
             for (int i = 0; i < generateNumber; i++)
             {
                 float random = Random.Range(this.transform.position.x - generateRange, this.transform.position.x + generateRange);
-                int itemObstacle = Random.Range(0, 3);
+                int itemObstacle = Random.Range(0, 2);
 
                 switch (itemObstacle)
                 {

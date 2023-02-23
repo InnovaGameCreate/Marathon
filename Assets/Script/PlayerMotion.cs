@@ -22,7 +22,7 @@ public class PlayerMotion : MonoBehaviour
     private bool slowDash = true; //スローダッシュフラグ
     private bool quickDash = true; //クイックダッシュフラグ
 
-    private float windDebuff;
+    public static float windDebuff;
 
     [SerializeField] GameObject MainCamera;
 
@@ -36,7 +36,7 @@ public class PlayerMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Weather.weatherNo == 5)
+        if (Weather.weatherNo == 4)
         {
             windDebuff = 0.8f;
         }
@@ -44,6 +44,7 @@ public class PlayerMotion : MonoBehaviour
         {
             windDebuff = 1.0f;
         }
+        Debug.Log(windDebuff);
         //前進
         this.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * windDebuff* Time.deltaTime, 0.0f, 0.0f);
         MainCamera.gameObject.transform.Translate(Distance.speed * Distance.slope * Distance.dash * DestoryObject.energyCount * windDebuff * Time.deltaTime, 0.0f, 0.0f);
