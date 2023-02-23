@@ -87,7 +87,6 @@ public class Status : MonoBehaviour
                     if (random <= 20)
                         coldflg = true;
 
-                    Debug.Log("数値:"); 
                 }
             }
 
@@ -104,11 +103,9 @@ public class Status : MonoBehaviour
                     
                 }
                 stamina_cold = 1.2f;
-                Debug.Log("風邪です");
             }
             else if (coldflg == false)
             {
-                Debug.Log("風邪じゃない");
                 coldJudgeTime++;
                 stamina_cold = 1.0f;
             }
@@ -119,6 +116,8 @@ public class Status : MonoBehaviour
             WaterGauge -= (100f / 90f)* water_weather;
             StaminaGauge -= (100f / 120f)* stamina_weather * stamina_cold * staminaPerSec;
             HealthGauge -= 0;
+
+            Debug.Log(staminaPerSec);
             //水分、満腹ゲージを90秒で0%になるようにしてください
             //スタミナゲージ120秒で0になるようにしてください
             if (SatietyGauge >= 100 / 2 && WaterGauge >= 100 / 2)
@@ -142,7 +141,7 @@ public class Status : MonoBehaviour
             {
                 StaminaGauge--;
             }
-
+            //食料ゲージが0のとき毎秒１ずつ減少
             
             if (injureflg == true)
             {
