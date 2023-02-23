@@ -7,6 +7,9 @@ public class DestoryObject : MonoBehaviour
     public GameObject player;
     private PlayerMotion playerMotionCs;
 
+    [SerializeField] AudioSource AS;
+    public AudioClip get;
+
     public static  int stomachPain;//0:腹痛ナシ , 1:動けない状態 , 2:食べられない状態
     private float healStomachPainTime;//腹痛が治るまで必要な時間
 
@@ -19,6 +22,7 @@ public class DestoryObject : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerMotionCs = player.GetComponent<PlayerMotion>();
+        AS = GetComponent<AudioSource>();
 
         stomachPain = 0;
         healStomachPainTime = 0;
@@ -65,6 +69,8 @@ public class DestoryObject : MonoBehaviour
     {
         
         Debug.Log("atatta");
+        AS.PlayOneShot(get);
+
         if (col.gameObject.CompareTag("JumpRamp"))
         {
             playerMotionCs.velocity = playerMotionCs.setVelocity * 1.2f;

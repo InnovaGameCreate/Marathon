@@ -35,7 +35,7 @@ public class Distance : MonoBehaviour
     void Update()
     {
         //‹——£ŒvŽZ
-        distance += (SPS * slope * dash * Time.deltaTime);
+        distance += (SPS * slope * dash * PlayerMotion.windDebuff *Time.deltaTime);
         distance = System.Math.Max(0, distance);
 
         //ŽžŠÔŒvŽZ

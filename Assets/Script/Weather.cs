@@ -60,7 +60,7 @@ public class Weather : MonoBehaviour
     int WeatherProbability(int no)
     {
         //•Ô‚è’l
-        int ret = 03;
+        int ret = 0;
 
         //ƒ‰ƒ“ƒ_ƒ€’l
         randomValue = Random.value;
@@ -98,14 +98,15 @@ public class Weather : MonoBehaviour
                 break;
             case 3:
             case 4:
+            case 5:
                 if (randomValue >= 0.90) ret = 5;
                 else if (randomValue >= 0.80) ret = 4;
                 else if (randomValue >= 0.70) ret = 3;
-                else if (randomValue >= 0.50) ret = 1;
+                else if (randomValue >= 0.50) ret = 2;
                 else ret = 0;
                 break;
         }
-        
+
         return ret;
     }
 }
